@@ -1,0 +1,46 @@
+current directory: /Users/e.taku/atoneBA_project/JudgePokerHandsService/JudgePokerHandsService2/vendor/bundle/gems/debug_inspector-1.1.0/ext/debug_inspector
+/Users/e.taku/.rbenv/versions/2.4.7/bin/ruby -I /Users/e.taku/.rbenv/versions/2.4.7/lib/ruby/site_ruby/2.4.0 extconf.rb
+creating Makefile
+
+current directory: /Users/e.taku/atoneBA_project/JudgePokerHandsService/JudgePokerHandsService2/vendor/bundle/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20220815-4665-6w0p06 sitelibdir\=./.gem.20220815-4665-6w0p06 clean
+
+current directory: /Users/e.taku/atoneBA_project/JudgePokerHandsService/JudgePokerHandsService2/vendor/bundle/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20220815-4665-6w0p06 sitelibdir\=./.gem.20220815-4665-6w0p06
+compiling debug_inspector.c
+debug_inspector.c:107:49: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE rb_cRubyVM = rb_const_get(rb_cObject, rb_intern("RubyVM"));
+                                                ^~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1753:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+debug_inspector.c:107:49: note: '{' token is here
+    VALUE rb_cRubyVM = rb_const_get(rb_cObject, rb_intern("RubyVM"));
+                                                ^~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1753:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1738:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+debug_inspector.c:107:49: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE rb_cRubyVM = rb_const_get(rb_cObject, rb_intern("RubyVM"));
+                                                ^~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1753:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1743:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+debug_inspector.c:107:49: note: ')' token is here
+    VALUE rb_cRubyVM = rb_const_get(rb_cObject, rb_intern("RubyVM"));
+                                                ^~~~~~~~~~~~~~~~~~~
+/Users/e.taku/.rbenv/versions/2.4.7/include/ruby-2.4.0/ruby/ruby.h:1753:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+2 warnings generated.
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/e.taku/atoneBA_project/JudgePokerHandsService/JudgePokerHandsService2/vendor/bundle/gems/debug_inspector-1.1.0/ext/debug_inspector
+make DESTDIR\= sitearchdir\=./.gem.20220815-4665-6w0p06 sitelibdir\=./.gem.20220815-4665-6w0p06 install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20220815-4665-6w0p06
