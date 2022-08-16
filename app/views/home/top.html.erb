@@ -1,5 +1,5 @@
 <head>
-
+  <title>PokerHands</title>
 </head>
 
 <body>
@@ -9,11 +9,22 @@
       <p class="sub-title">atoneの試練</p>
     </div>
     <div class="contents">
-      <!-- %= form_tag({ :controller => "コントローラー名", :action => "アクション名" }) do % --!>
-        <p>カードを入力してください。</p>
-        <input class="form" type="text" placeholder="H5 C5 D2 D1 H12">
+      <%= form_tag("/home/check") do %>
+        <p>5つのカード指定文字を半角スペース区切りで入力してください。</p>
+        <p>（例："S1 H3 D9 C13 S11"）</p>
+        <% if flash[:error] %>
+          <div class="flash">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" value="<%= @cards %>" required>
         <input class="btn" type="submit" value="調べる">
-      <!-- %end --!>
+      <% end %>
+      <% if flash[:result] %>
+        <div class="flash">
+          <%= flash[:result] %>
+        </div>
+      <% end %>
     </div>
     <div class="footer">
 
