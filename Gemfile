@@ -46,3 +46,9 @@ group :development do
 end
 
 gem 'grape'
+
+group :development, :test do
+  gem 'pry-rails'
+end
+
+gem 'pry-byebug', group: :development

@@ -6,23 +6,16 @@
   <div class="wrapper">
     <div class="header">
       <p class="title">Judge Poker Hands</p>
-      <p class="sub-title">atoneの試練</p>
     </div>
     <div class="contents">
       <%= form_tag("/home/check") do %>
-        <p>5つのカード指定文字を半角スペース区切りで入力してください。</p>
-        <p>（例："S1 H3 D9 C13 S11"）</p>
-        <% if flash[:error] %>
-          <div class="flash">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" value="<%= @cards %>" required>
+        <!-- value=" @cards " -->
+        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" style="text-align: center;" value="<%=  %>">
         <input class="btn" type="submit" value="調べる">
       <% end %>
-      <% if flash[:result] %>
+      <% if flash[:message] %>
         <div class="flash">
-          <%= flash[:result] %>
+          <%= flash[:message] %>
         </div>
       <% end %>
     </div>
