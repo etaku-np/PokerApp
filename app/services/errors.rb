@@ -4,13 +4,9 @@ module Errors
   def search_errors(cards)
 
     @carr = cards.split
-    # @num_array_s = cards.delete("^0-9 ").split
-    # #ナンバーを文字列から数値に変換して、並び替え
-    # @num_array_i = @num_array_s.map(&:to_i).sort
-    #
-    # #入力が不正な要素を取得
-    # @error_array = @carr.grep(/^0-9SHDC\s+/)
-
+    @suit = cards.delete("^SHDC")
+    @num_array_s = cards.delete("^0-9 ").split
+    @num_array_i = @num_array_s.map(&:to_i).sort
 
   end
 
@@ -19,34 +15,25 @@ module Errors
   end
 
   def input_error?
-    true if @carr.length != 5
+    true if @carr.length != 5 || @suit.length != @num_array_s.length
   end
 
   def duplicate_error?
     true if @carr.uniq.length != 5
   end
 
-  # def number_error?
-  #   @num_array_i.each do |i|
-  #
-  #   end
-  #
-  #   true if @num_array_i
-  #
-  # end
 
   def determine
 
     if blank_error?
       "カードを入力してください。"
     elsif input_error?
-      "５枚のカードを入力してください。"
+      "５枚のカードを正しく入力してください。"
     elsif duplicate_error?
       "カードが重複しています。"
-    # elsif !@error_array.empty?
-    #   @error_array.each do |n|
-    #     "#{@carr.find_index(n) + 1}番目の要素が不正です。（#{n}）"
-    #   end
+    elsif @num_array_i.select{ |a| a < 1 || a > 13 }.any?
+      "ナンバーは 1 から 13 で入力してください。"
+
     end
 
   end

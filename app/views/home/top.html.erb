@@ -6,15 +6,18 @@
   <div class="wrapper">
     <div class="header">
       <p class="title">Judge Poker Hands</p>
+      <p class="how_to_use">半角英字大文字のスート（S,H,D,C）と数字（1〜13）の組み合わせで<br>カードを指定してください。</p>
     </div>
     <div class="contents">
       <%= form_tag("/home/check") do %>
-        <!-- value=" @cards " -->
-        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" style="text-align: center;" value="<%=  %>">
+        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" pattern="^[0-9A-Z ]+$" style="text-align: center;" value=<%= params[:cards] %> >
         <input class="btn" type="submit" value="調べる">
       <% end %>
       <% if flash[:message] %>
         <div class="flash">
+          <div class="input_cards">
+            <%= flash[:cards] %>
+          </div>
           <%= flash[:message] %>
         </div>
       <% end %>

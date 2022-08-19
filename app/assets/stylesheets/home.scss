@@ -11,11 +11,15 @@ body {
   font-weight: bold;
 }
 
+.how_to_use {
+  font-size: 15px;
+}
+
 .contents {
   background: rgba(184, 184, 184, 0.5);
   border-radius: 20px;
   padding: 50px;
-  height: 100px;
+  height: 110px;
 
 }
 
@@ -26,9 +30,9 @@ body {
 }
 
 .flash {
-  margin-top: 20px;
+  margin-top: 18px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .form {
@@ -37,4 +41,9 @@ body {
 
 .btn {
   font-size: 27px;
+}
+
+.input_cards {
+  font-size: 20px;
+  font-weight: lighter;
 }
