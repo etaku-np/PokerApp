@@ -11,9 +11,9 @@ class HomeController < ApplicationController
 
 
   def check
-    cards = params[:cards]
-    Errors.search_errors(cards)
-    Hands.search_hands(cards)
+    @cards = params[:cards]
+    Errors.search_errors(@cards)
+    Hands.search_hands(@cards)
 
     if Errors.determine != nil
       flash[:message] = "#{Errors.determine}"
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     end
     flash[:cards] = "#{params[:cards]} "
 
-    redirect_to("/")
+    redirect_to ("/")
     # render "home/top"
   end
 
