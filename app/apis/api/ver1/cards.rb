@@ -2,18 +2,53 @@ module API
   module Ver1
     class Cards < Grape::API
 
-      content_type :json, 'application/json'
-      format :json
-      params do
-        requires :cards, type: Array
-      end
+      include Hands
+      include Errors
 
-      post do
-        @cards = params[:cards]
+      # resource :cards do
 
-      end
+        content_type :json, 'application/json'
+        format :json
 
+        desc 'ここに説明を書く'
+        params do
+          requires :cards, type: Array, desc: 'Entered cards'
+        end
+
+        post do
+          cards = params[:cards]
+          @results = []
+          @errors = []
+          cards.each do |body|
+            Errors.search_errors(body)
+            Hands.search_hands(body)
+
+            if Errors.determine != nil
+              error = {
+                "cards" => body,
+                "msg" => Errors.determine
+              }
+            else
+              result = {
+                "cards" => body,
+                "hands" => Hands.judge
+              }
+            end
+
+            @results << result
+            @errors << error
+
+          end
+          @results.compact!
+          @errors.compact!
+
+          responses = {
+            "results" => @results,
+            "errors" => @errors
+          }
+          responses
+        end
+      #end
     end
   end
-
 end
