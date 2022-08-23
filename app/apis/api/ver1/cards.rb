@@ -4,7 +4,6 @@ module API
 
       include Hands
       include Errors
-      # include Score
 
       # resource :cards do
 
@@ -20,10 +19,11 @@ module API
           cards = params[:cards]
           @results = []
           @errors = []
+          @score_array = []
+
           cards.each do |body|
             Errors.search_errors(body)
             Hands.search_hands(body)
-            # Score.search_score(body)
 
             if Errors.determine != nil
               error = {
@@ -31,20 +31,26 @@ module API
                 "msg" => Errors.determine
               }
             else
+              @score_array << $score
+
+
               result = {
                 "cards" => body,
                 "hands" => Hands.judge,
-                # "score" => Score.calc
+                "best" => $score
               }
             end
+
 
             @results << result
             @errors << error
 
           end
-          # binding.pry
+
           @results.compact!
           @errors.compact!
+
+          # binding.pry
 
           responses = {
             "results" => @results,

@@ -55,22 +55,31 @@ module Hands
     combination
 
     if flush? && straight?
+      $score = 8
       "ストレートフラッシュ"
     elsif flush?
+      $score = 7
       "フラッシュ"
     elsif straight?
+      $score = 6
       "ストレート"
     elsif four_card?
+      $score = 5
       "フォーカード"
     elsif full_house?
+      $score = 4
       "フルハウス"
     elsif three_card?
+      $score = 3
       "スリーカード"
     elsif two_pair?
+      $score = 2
       "ツーペア"
     elsif one_pair?
+      $score = 1
       "ワンペア"
     else
+      $score = 0
       "ハイカード"
     end
 

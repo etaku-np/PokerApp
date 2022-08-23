@@ -18,7 +18,7 @@
           <div class="input_cards">
             <%= flash[:cards] %>
           </div>
-          <%= flash[:message] %>
+          <%= simple_format(flash[:message]) %>
         </div>
       <% end %>
     </div>

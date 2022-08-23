@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     end
     flash[:cards] = "#{params[:cards]} "
 
-    redirect_to ("/")
+    redirect_to("/")
     # render "home/top"
   end
 
