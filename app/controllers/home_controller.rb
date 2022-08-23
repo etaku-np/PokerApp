@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
 
-
   # require_relative '../services/errors'
   # require_relative '../services/hands'
   include Hands
@@ -9,22 +8,14 @@ class HomeController < ApplicationController
   def top
   end
 
-
   def check
-    @cards = params[:cards]
-    Errors.search_errors(@cards)
-    Hands.search_hands(@cards)
+    cards = params[:cards]
+    flash[:cards] = cards
 
-    if Errors.determine != nil
-      flash[:message] = "#{Errors.determine}"
-    else
-      flash[:message] = "#{Hands.judge}"
-    end
-    flash[:cards] = "#{params[:cards]} "
+    message = Errors.search_errors(cards) || Hands.search_hands(cards)[:name]
+    flash[:message] = message.is_a?(Array) ? message.join("\n") : message
 
     redirect_to("/")
-    # render "home/top"
   end
-
 
 end

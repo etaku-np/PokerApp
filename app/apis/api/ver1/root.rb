@@ -6,6 +6,17 @@ module API
       format :json
 
       mount API::Ver1::Cards
+
+      include Hands
+      include Errors
+      #include Scores
+
+      def init
+
+      end
+
+
+
     end
   end
 end

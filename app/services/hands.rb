@@ -2,12 +2,12 @@ module Hands
 
   def search_hands(cards)
 
-    @carr = cards.split
+    @card_array = cards.split
     #受け取ったカードを、スートとナンバーに分ける
-    @suit_array = cards.delete("^SHDC ").split
-    @num_array_s = cards.delete("^0-9 ").split
-    #ナンバーを文字列から数値に変換して、並び替え
-    @num_array_i = @num_array_s.map(&:to_i).sort
+    @suit_array = cards.scan(/[SHDC]/)
+    @num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
+
+    judge
 
   end
 
@@ -16,7 +16,7 @@ module Hands
   end
 
   def straight?
-    true if (@num_array_i.uniq.length == 5) && (@num_array_i.max - @num_array_i.min == 4) || @num_array_i == [1, 10, 11, 12, 13]
+    true if (@num_array.uniq.length == 5) && (@num_array.max - @num_array.min == 4) || @num_array == [1, 10, 11, 12, 13]
   end
 
   def combination
@@ -24,8 +24,8 @@ module Hands
     @hands_array = []
 
     #カードの組み合わせを配列で表示する。
-    (0..@num_array_i.uniq.length - 1).each do |n|
-      @hands_array[n] = @num_array_i.count(@num_array_i.uniq[n])
+    (0..@num_array.uniq.length - 1).each do |n|
+      @hands_array[n] = @num_array.count(@num_array.uniq[n])
       @hands_array.sort!
     end
 
@@ -55,32 +55,23 @@ module Hands
     combination
 
     if flush? && straight?
-      $score = 8
-      "ストレートフラッシュ"
+      { name: 'ストレートフラッシュ', score: 8 }
     elsif flush?
-      $score = 7
-      "フラッシュ"
+      { name: 'フラッシュ', score: 5 }
     elsif straight?
-      $score = 6
-      "ストレート"
+      { name: 'ストレート', score: 4 }
     elsif four_card?
-      $score = 5
-      "フォーカード"
+      { name: 'フォーカード', score: 7 }
     elsif full_house?
-      $score = 4
-      "フルハウス"
+      { name: 'フルハウス', score: 6 }
     elsif three_card?
-      $score = 3
-      "スリーカード"
+      { name: 'スリーカード', score: 3 }
     elsif two_pair?
-      $score = 2
-      "ツーペア"
+      { name: 'ツーペア', score: 2 }
     elsif one_pair?
-      $score = 1
-      "ワンペア"
+      { name: 'ワンペア', score: 1 }
     else
-      $score = 0
-      "ハイカード"
+      { name: 'ハイカード', score: 0 }
     end
 
   end
