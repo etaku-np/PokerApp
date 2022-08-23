@@ -22,29 +22,21 @@ module API
           @score_array = []
 
           cards.each do |body|
-            Errors.search_errors(body)
-            Hands.search_hands(body)
-
-            if Errors.determine != nil
+            if Errors.search_errors(body)
               error = {
                 "cards" => body,
-                "msg" => Errors.determine
+                "msg" => Errors.search_errors(body)
               }
             else
-              @score_array << $score
-
-
+              @score_array << Hands.search_hands(body)[:score]
               result = {
                 "cards" => body,
-                "hands" => Hands.judge,
-                "best" => $score
+                "hands" => Hands.search_hands(body)[:name],
+                "score" => Hands.search_hands(body)[:score]
               }
             end
-
-
             @results << result
             @errors << error
-
           end
 
           @results.compact!
@@ -52,11 +44,11 @@ module API
 
           # binding.pry
 
-          responses = {
+          response = {
             "results" => @results,
             "errors" => @errors
           }
-          responses
+          response
 
         end
       #end
