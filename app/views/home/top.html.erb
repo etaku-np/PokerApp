@@ -10,7 +10,7 @@
     </div>
     <div class="contents">
       <%= form_tag("/home/check") do %>
-        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 D1 H12" pattern="^[0-9A-Z ]+$" style="text-align: center;" value="<%= flash[:cards] %>" >
+        <input class="form" name="cards" type="text" placeholder="H5 C5 D2 S1 H12" pattern="^[0-9A-Z ]+$" style="text-align: center;" value="<%= flash[:cards] %>" >
         <input class="btn" type="submit" value="調べる">
       <% end %>
       <% if flash[:message] %>

@@ -31,6 +31,8 @@ module API
         @errors = []
         @score_array = []
 
+        error!({ errors: [{ msg: "入力内容を確認してください。"}] }, 400) if cards.empty?
+
         cards.each do |body|
           if Errors.search_errors(body)
             error = {
