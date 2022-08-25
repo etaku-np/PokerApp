@@ -6,54 +6,62 @@ module API
       include Errors
       include Scores
 
-      # resource :cards do
+      content_type :json, "application/json"
+      format :json
 
-        content_type :json, 'application/json'
-        format :json
+      content_type :xml, 'application/xml'
+      content_type :javascript, 'application/javascript'
+      content_type :txt, 'text/plain'
+      content_type :html, 'text/html'
 
-        desc 'ここに説明を書く'
-        params do
-          requires :cards, type: Array, desc: 'Entered cards'
-        end
+      default_format :json
 
-        post do
-          cards = params[:cards]
-          @results = []
-          @errors = []
-          @score_array = []
+      params do
+        requires :cards, type: Array
+      end
 
-          cards.each do |body|
-            if Errors.search_errors(body)
-              error = {
-                "cards" => body,
-                "msg" => Errors.search_errors(body)
-              }
-            else
-              @score_array << Hands.search_hands(body)[:score]
-              result = {
-                "cards" => body,
-                "hands" => Hands.search_hands(body)[:name],
-                "best" => Hands.search_hands(body)[:score]
-              }
-            end
-            @results << result
-            @errors << error
+      rescue_from Grape::Exceptions::Base do |_e|
+        error!({ errors: [{ msg: "入力形式を確認してください。" }] }, 400)
+      end
+
+
+      post do
+        cards = params[:cards]
+        @results = []
+        @errors = []
+        @score_array = []
+
+        cards.each do |body|
+          if Errors.search_errors(body)
+            error = {
+              "cards" => body,
+              "msg" => Errors.search_errors(body)
+            }
+          else
+            @score_array << Hands.search_hands(body)[:score]
+            result = {
+              "cards" => body,
+              "hands" => Hands.search_hands(body)[:name],
+              "best" => Hands.search_hands(body)[:score]
+            }
           end
-
-          @results.compact!
-          @errors.compact!
-
-          # @resultsを、役最強部分を更新した状態に上書き。
-          @results = Scores.search_best(@score_array, @results)
-
-          response = {
-            "results" => @results,
-            "errors" => @errors
-          }
-          response
-
+          @results << result
+          @errors << error
         end
-      #end
+
+        @results.compact!
+        @errors.compact!
+
+        # @resultsを、役最強部分を更新した状態に上書き。
+        @results = Scores.search_best(@score_array, @results)
+
+        response = {
+          "results" => @results,
+          "errors" => @errors
+        }
+        response
+
+      end
     end
   end
 end
