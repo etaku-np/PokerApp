@@ -61,7 +61,8 @@ module API
           "results" => @results,
           "errors" => @errors
         }
-        response
+        # ハッシュの値が空の配列時、要素を削除する
+        response.delete_if{ |_, value| value.empty? }
 
       end
     end
