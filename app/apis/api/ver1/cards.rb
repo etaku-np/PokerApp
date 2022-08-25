@@ -4,6 +4,7 @@ module API
 
       include Hands
       include Errors
+      include Scores
 
       # resource :cards do
 
@@ -32,7 +33,7 @@ module API
               result = {
                 "cards" => body,
                 "hands" => Hands.search_hands(body)[:name],
-                "score" => Hands.search_hands(body)[:score]
+                "best" => Hands.search_hands(body)[:score]
               }
             end
             @results << result
@@ -42,7 +43,8 @@ module API
           @results.compact!
           @errors.compact!
 
-          # binding.pry
+          # @resultsを、役最強部分を更新した状態に上書き。
+          @results = Scores.search_best(@score_array, @results)
 
           response = {
             "results" => @results,

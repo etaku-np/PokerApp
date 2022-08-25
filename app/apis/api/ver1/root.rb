@@ -9,7 +9,7 @@ module API
 
       include Hands
       include Errors
-      #include Scores
+      include Scores
 
       def init
 

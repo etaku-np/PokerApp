@@ -23,7 +23,7 @@ module Hands
     #とりあえず空の配列を作る
     @hands_array = []
 
-    #カードの組み合わせを配列で表示する。
+    #ナンバーの組み合わせを配列で表示する。=> [1, 1, 3], [1, 4]
     (0..@num_array.uniq.length - 1).each do |n|
       @hands_array[n] = @num_array.count(@num_array.uniq[n])
       @hands_array.sort!
