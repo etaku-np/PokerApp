@@ -26,7 +26,7 @@ module Errors
     true if cards.split.length != 5
   end
 
-  # カードが重複するか？
+  # カードの重複に対するエラー文を出す
   def duplicate_error(card_array)
     ["カードが重複しています。"] if card_array.uniq.length != 5
   end
