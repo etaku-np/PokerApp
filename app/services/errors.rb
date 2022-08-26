@@ -1,9 +1,7 @@
-CORRECT =/^([CDHS])([1-9]|1[0-3])$/
+CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 module Errors
 
   def search_errors(cards)
-
-    # card_array = cards.split
 
     if cards.blank? # 入力が空白だけか？
       ["カードを入力してください。"]
@@ -18,16 +16,10 @@ module Errors
 
   end
 
-  #未入力
-  # def blank_error?(cards)
-  #   cards.blank?
-  # end
-
   # 入力値が文字列以外か？
   def class_error?(cards)
     true if cards.class != String
   end
-
 
   # カードが5枚以外か？
   def input_error?(cards)
