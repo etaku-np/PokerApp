@@ -89,7 +89,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
     end
 
 
-    describe "incorrect input" do
+    describe "the incorrect input" do
 
       let(:error_msg) { JSON.parse(response.body)["errors"][0]["msg"] }
       shared_examples "returns Status: 400 and error massage" do
