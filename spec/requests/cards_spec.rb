@@ -122,14 +122,19 @@ RSpec.describe API::Ver1::Cards, type: :request do
       end
 
     end
+  end
 
-    describe "GET API" do
-      before do
-        get "/api/v1"
-      end
+  describe "GET API" do
 
+    before do
+      get "/api/v1"
     end
 
-
+    it "returns Status: 400" do
+      expect(response.status).to eq 400
+    end
+    it "returns error message" do
+      expect(JSON.parse(response.body)["errors"][0]["msg"]).to eq "入力形式を確認してください。"
+    end
   end
 end
