@@ -54,4 +54,4 @@ end
 
 gem 'pry-byebug', group: :development
 gem 'pry-nav'
-
+gem 'simplecov'
