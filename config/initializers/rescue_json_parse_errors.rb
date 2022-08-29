@@ -9,7 +9,7 @@ class RescueJsonParseErrors
     rescue ActionDispatch::ParamsParser::ParseError => _e
       return [
         400, { 'Content-Type' => 'application/json' },
-        [{ error: 'There was a problem in the your JSON' }.to_json]
+        [{ error: "json形式が不正です。" }.to_json]
       ]
     end
   end

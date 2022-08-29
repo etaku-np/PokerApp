@@ -24,6 +24,6 @@ module JudgePokerHandsService2
     config.active_record.raise_in_transactional_callbacks = true
     config.paths.add File.join('app', 'apis'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
-    # config.middleware.insert_before ActionDispatch::ParamsParser, 'RescueJsonParseErrors'
+    config.middleware.insert_before ActionDispatch::ParamsParser, 'RescueJsonParseErrors'
   end
 end

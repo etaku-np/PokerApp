@@ -56,7 +56,7 @@ module API
 
         # @resultsを、役最強部分を更新した状態に上書き。
         @results = Scores.search_best(@score_array, @results)
-
+        # binding.pry
         response = {
           "results" => @results,
           "errors" => @errors
