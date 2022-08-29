@@ -55,23 +55,23 @@ module Hands
     combination
 
     if flush? && straight?
-      { :name => 'ストレートフラッシュ', :score => 8 }
-    elsif flush?
-      { :name => 'フラッシュ', :score => 5 }
-    elsif straight?
-      { :name => 'ストレート', :score => 4 }
+      { :name => "ストレートフラッシュ", :score => 8 }
     elsif four_card?
-      { :name => 'フォーカード', :score => 7 }
+      { :name => "フォーカード", :score => 7 }
     elsif full_house?
-      { :name => 'フルハウス', :score => 6 }
+      { :name => "フルハウス", :score => 6 }
+    elsif flush?
+      { :name => "フラッシュ", :score => 5 }
+    elsif straight?
+      { :name => "ストレート", :score => 4 }
     elsif three_card?
-      { :name => 'スリーカード', :score => 3 }
+      { :name => "スリーカード", :score => 3 }
     elsif two_pair?
-      { :name => 'ツーペア', :score => 2 }
+      { :name => "ツーペア", :score => 2 }
     elsif one_pair?
-      { :name => 'ワンペア', :score => 1 }
+      { :name => "ワンペア", :score => 1 }
     else
-      { :name => 'ハイカード', :score => 0 }
+      { :name => "ハイカード", :score => 0 }
     end
 
   end
