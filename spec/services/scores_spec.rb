@@ -25,11 +25,11 @@ RSpec.describe Scores, type: :service do
       }
 
       it "turns the 1st 'best' into false" do
-        expect(new_results[0][:best]).to eq false
+        expect(new_results[0]["best"]).to eq false
       end
 
       it "turns the 2nd 'best' into false" do
-        expect(new_results[1][:best]).to eq true
+        expect(new_results[1]["best"]).to eq true
       end
 
     end
@@ -57,15 +57,15 @@ RSpec.describe Scores, type: :service do
       }
 
       it "turns the 1st 'best' into false" do
-        expect(new_results[0][:best]).to eq true
+        expect(new_results[0]["best"]).to eq true
       end
 
       it "turns the 2nd 'best' into false" do
-        expect(new_results[1][:best]).to eq true
+        expect(new_results[1]["best"]).to eq true
       end
 
       it "turns the 3rd 'best' into false" do
-        expect(new_results[2][:best]).to eq false
+        expect(new_results[2]["best"]).to eq false
       end
 
     end
