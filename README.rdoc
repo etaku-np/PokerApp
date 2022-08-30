@@ -3,11 +3,13 @@
 # atoneの試練 etaku
 
 atoneの試練にて、ポーカーの役判定アプリを作りました。
+
 具体的には、WebAppとAPIの２つと、それをチェックするテストコードを書きました。
 
 # DEMO
 
 仕様書　→　docs.google.com/presentation/d/1sj_A330Ei4CSqTKJxJ7EKiVe8HBWkDPQ8D6UPKHuJzM/edit#slide=id.p　
+
 サンプルページ　→　p0kerhands.herokuapp.com/
 
 # Features
