@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 
-  # require_relative '../services/errors'
-  # require_relative '../services/hands'
   include Hands
   include Errors
 
