@@ -1,28 +1,43 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# atoneの試練 etaku
 
-Things you may want to cover:
+atoneの試練にて、ポーカーの役判定アプリを作りました。
 
-* Ruby version
+具体的には、WebAppとAPIの２つと、それをチェックするテストコードを書きました。
 
-* System dependencies
+# DEMO
 
-* Configuration
+[仕様書](docs.google.com/presentation/d/1sj_A330Ei4CSqTKJxJ7EKiVe8HBWkDPQ8D6UPKHuJzM/edit#slide=id.p)はこちらです。
 
-* Database creation
+仕様書に沿って作成しました。サンプルページは(p0kerhands.herokuapp.com/)です。
 
-* Database initialization
+# Features
 
-* How to run the test suite
+特徴などを説明する
 
-* Services (job queues, cache servers, search engines, etc.)
+# Requirement
 
-* Deployment instructions
+RubyとRailsのバージョンを書く
 
-* ...
+huga 3.5.2
 
+hogehuga 1.0.2
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# Usage
+
+DEMOの実行方法など、基本的な使い方を説明する
+
+“`bash git clone github.com/hoge/~ cd examples python demo.py “`
+
+# Note
+
+注意点などがあれば書く
+
+# Author
+
+作成情報を列挙する
+
+etaku74r74n
+
+atoneBA インターン
