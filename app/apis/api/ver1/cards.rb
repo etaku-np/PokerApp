@@ -32,19 +32,19 @@ module API
 
         error!({ errors: [{ msg: "入力内容を確認してください。"}] }, 400) if cards.empty?
 
-        cards.each do |body|
-          if Errors.search_errors(body)
+        cards.each do |card|
+          if Errors.search_errors(card)
             error = {
-              "cards" => body,
-              "msg" => Errors.search_errors(body)
+              "cards" => card,
+              "msg" => Errors.search_errors(card)
             }
             @errors << error
           else
-            @score_array << Hands.search_hands(body)[:score]
+            @score_array << Hands.search_hands(card)[:score]
             result = {
-              "cards" => body,
-              "hands" => Hands.search_hands(body)[:name],
-              "best" => Hands.search_hands(body)[:score]
+              "cards" => card,
+              "hands" => Hands.search_hands(card)[:name],
+              "best" => Hands.search_hands(card)[:score]
             }
             @results << result
           end
