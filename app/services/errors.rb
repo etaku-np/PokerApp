@@ -7,11 +7,9 @@ module Errors
       ["カードを入力してください。"]
     elsif class_error?(cards)
       ["文字列を入力してください。"]
-    elsif input_error?(cards)
-      ["5つのカード指定文字を半角スペース区切りで入力してください。"]
-    else # 不正なカードに対するエラー文があればそれを、なければ重複エラーを返す。
+    else
       card_array = cards.split
-      card_error(card_array) || duplicate_error(card_array)
+      input_error(card_array) || card_error(card_array) || duplicate_error(card_array)
     end
 
   end
@@ -22,8 +20,8 @@ module Errors
   end
 
   # カードが5枚以外か？
-  def input_error?(cards)
-    true if cards.split.length != 5
+  def input_error(card_array)
+    ["5つのカード指定文字を半角スペース区切りで入力してください。"] if card_array.length != 5
   end
 
   # カードの重複に対するエラー文を出す
@@ -47,7 +45,7 @@ module Errors
 
 
 
-  module_function :search_errors, :input_error?, :class_error?, :duplicate_error, :card_error, :card_error?
+  module_function :search_errors, :input_error, :class_error?, :duplicate_error, :card_error, :card_error?
 
 end
 
