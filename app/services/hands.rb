@@ -1,13 +1,10 @@
 module Hands
 
   def search_hands(cards)
-
     #受け取ったカードを、スートとナンバーに分ける
     @suit_array = cards.scan(/[SHDC]/)
     @num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
-
     judge
-
   end
 
   def flush?
@@ -15,7 +12,7 @@ module Hands
   end
 
   def straight?
-    true if (@num_array.uniq.length == 5) && (@num_array.max - @num_array.min == 4) || @num_array == [1, 10, 11, 12, 13]
+    true if ( (@num_array.uniq.length == 5) && (@num_array.max - @num_array.min == 4) ) || @num_array == [1, 10, 11, 12, 13]
   end
 
   def combination
@@ -27,7 +24,6 @@ module Hands
       @hands_array[n] = @num_array.count(@num_array.uniq[n])
       @hands_array.sort!
     end
-
   end
 
   def four_card?
@@ -52,7 +48,6 @@ module Hands
 
   def judge
     combination
-
     if flush? && straight?
       { :name => "ストレートフラッシュ", :score => 8 }
     elsif four_card?
@@ -72,7 +67,6 @@ module Hands
     else
       { :name => "ハイカード", :score => 0 }
     end
-
   end
 
   module_function :search_hands, :combination, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
