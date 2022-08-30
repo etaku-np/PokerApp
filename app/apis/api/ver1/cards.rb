@@ -24,7 +24,6 @@ module API
         error!({ errors: [{ msg: "入力形式を確認してください。" }] }, 400)
       end
 
-
       post do
         cards = params[:cards]
         @results = []
