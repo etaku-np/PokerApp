@@ -3,14 +3,12 @@
 # atoneの試練 etaku
 
 atoneの試練にて、ポーカーの役判定アプリを作りました。
-
 具体的には、WebAppとAPIの２つと、それをチェックするテストコードを書きました。
 
 # DEMO
 
-[仕様書](docs.google.com/presentation/d/1sj_A330Ei4CSqTKJxJ7EKiVe8HBWkDPQ8D6UPKHuJzM/edit#slide=id.p)はこちらです。
-
-仕様書に沿って作成しました。サンプルページは(p0kerhands.herokuapp.com/)です。
+仕様書　→　docs.google.com/presentation/d/1sj_A330Ei4CSqTKJxJ7EKiVe8HBWkDPQ8D6UPKHuJzM/edit#slide=id.p　
+サンプルページ　→　p0kerhands.herokuapp.com/
 
 # Features
 
@@ -18,17 +16,27 @@ atoneの試練にて、ポーカーの役判定アプリを作りました。
 
 # Requirement
 
-RubyとRailsのバージョンを書く
+* ruby 2.4.7p357 (2019-08-28 revision 67796) [-darwin21]
 
-huga 3.5.2
-
-hogehuga 1.0.2
+* Rails 4.2.11.3
 
 # Usage
 
-DEMOの実行方法など、基本的な使い方を説明する
+## Webアプリケーション
 
-“`bash git clone github.com/hoge/~ cd examples python demo.py “`
+1.
+
+2.
+
+3.
+
+4.
+
+## API
+
+1.
+
+2.
 
 # Note
 
@@ -36,8 +44,6 @@ DEMOの実行方法など、基本的な使い方を説明する
 
 # Author
 
-作成情報を列挙する
+* etaku74r74n
 
-etaku74r74n
-
-atoneBA インターン
+* atoneBA インターン
