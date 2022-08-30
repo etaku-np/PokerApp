@@ -17,33 +17,33 @@ module Hands
 
   def combination
     #とりあえず空の配列を作る
-    @hands_array = []
+    @num_count_array = []
 
     #ナンバーの組み合わせを配列で表示する。=> [1, 1, 3], [1, 4]
     (0..@num_array.uniq.length - 1).each do |n|
-      @hands_array[n] = @num_array.count(@num_array.uniq[n])
-      @hands_array.sort!
+      @num_count_array[n] = @num_array.count(@num_array.uniq[n])
+      @num_count_array.sort!
     end
   end
 
   def four_card?
-    true if @hands_array == [1, 4]
+    true if @num_count_array == [1, 4]
   end
 
   def full_house?
-    true if @hands_array == [2, 3]
+    true if @num_count_array == [2, 3]
   end
 
   def three_card?
-    true if @hands_array == [1, 1, 3]
+    true if @num_count_array == [1, 1, 3]
   end
 
   def two_pair?
-    true if @hands_array == [1, 2, 2]
+    true if @num_count_array == [1, 2, 2]
   end
 
   def one_pair?
-    true if @hands_array == [1, 1, 1, 2]
+    true if @num_count_array == [1, 1, 1, 2]
   end
 
   def judge
