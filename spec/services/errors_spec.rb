@@ -9,22 +9,22 @@ RSpec.describe Errors, type: :service do
 
     context "when no card is entered" do
       let(:cards) { nil }
-      it { is_expected.to eq ["カードを入力してください。"]}
+      it { is_expected.to eq ["カードを入力してください。"] }
     end
 
     context "when only blanks are entered" do
       let(:cards) { " " }
-      it { is_expected.to eq ["カードを入力してください。"]}
+      it { is_expected.to eq ["カードを入力してください。"] }
     end
 
     context "when less than 5 cards are entered" do
       let(:cards) { "S2 C4 D13 H9" }
-      it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"]}
+      it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"] }
     end
 
     context "when more than 5 cards are entered" do
       let(:cards) { "C11 H5 S12 C7 D3 H3" }
-      it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"]}
+      it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"] }
     end
 
     context "when the suits of all cards are incorrect" do
@@ -40,7 +40,7 @@ RSpec.describe Errors, type: :service do
 
     context "when the suit of particular card is incorrect" do
       let(:cards) { "C1 K3 S8 D10 C8" }
-      it { is_expected.to eq ["2番目のカード指定文字が不正です。(K3)"]}
+      it { is_expected.to eq ["2番目のカード指定文字が不正です。(K3)"] }
     end
 
     context "when the numbers of all cards are incorrect" do
@@ -66,20 +66,23 @@ RSpec.describe Errors, type: :service do
 
     context "when a duplicate pair of cards is entered" do
       let(:cards) { "D5 C4 D5 H4 H9" }
-      it { is_expected.to eq ["カードが重複しています。"]}
+      it { is_expected.to eq ["カードが重複しています。"] }
     end
 
     context "when a duplicate pair of cards is entered" do
       let(:cards) { "C10 C7 C10 C10 S13" }
-      it { is_expected.to eq ["カードが重複しています。"]}
+      it { is_expected.to eq ["カードが重複しています。"] }
     end
 
     context "when integers is entered in array" do
-      let (:cards){ 100 }
-      it { is_expected.to eq ["文字列を入力してください。"]}
-
+      let(:cards){ 100 }
+      it { is_expected.to eq ["文字列を入力してください。"] }
     end
 
+    context "when multiple errors are possible" do
+      let(:cards){ "F1 C0 C10 C10 S13 P89" }
+      it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"] }
+    end
 
   end
 
