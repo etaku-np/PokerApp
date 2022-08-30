@@ -1,20 +1,17 @@
 module API
   module Ver1
     class Cards < Grape::API
-
       include Hands
       include Errors
       include Scores
 
       content_type :json, "application/json"
       format :json
-
+      default_format :json
       content_type :xml, 'application/xml'
       content_type :javascript, 'application/javascript'
       content_type :txt, 'text/plain'
       content_type :html, 'text/html'
-
-      default_format :json
 
       params do
         requires :cards, type: Array
