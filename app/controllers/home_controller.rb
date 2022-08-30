@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   include Hands
   include Errors
 
@@ -15,8 +14,6 @@ class HomeController < ApplicationController
 
     # （特にエラーメッセージが）配列になっている場合は改行して出す。そうでなければそのまま。
     flash[:message] = message.is_a?(Array) ? message.join("\n") : message
-
     redirect_to("/")
   end
-
 end
