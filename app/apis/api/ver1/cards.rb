@@ -38,6 +38,7 @@ module API
               "cards" => body,
               "msg" => Errors.search_errors(body)
             }
+            @errors << error
           else
             @score_array << Hands.search_hands(body)[:score]
             result = {
@@ -45,13 +46,9 @@ module API
               "hands" => Hands.search_hands(body)[:name],
               "best" => Hands.search_hands(body)[:score]
             }
+            @results << result
           end
-          @results << result
-          @errors << error
         end
-
-        @results.compact!
-        @errors.compact!
 
         # @resultsを、役最強部分を更新した状態に上書き。
         @results = Scores.search_best(@score_array, @results)
