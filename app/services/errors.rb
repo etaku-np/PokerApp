@@ -2,16 +2,14 @@ CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 module Errors
 
   def search_errors(cards)
-
     if cards.blank? # 入力が空白だけか？
       ["カードを入力してください。"]
     elsif class_error?(cards)
       ["文字列を入力してください。"]
     else
       card_array = cards.split
-      input_error(card_array) || card_error(card_array) || duplicate_error(card_array)
+      input_error(card_array) || incorrect_card_error(card_array) || duplicate_error(card_array)
     end
-
   end
 
   # 入力値が文字列以外か？
@@ -30,22 +28,19 @@ module Errors
   end
 
   # 不正なカードに対するエラー文を配列で出す。
-  def card_error(card_array)
+  def incorrect_card_error(card_array)
     error_msg_array = []
     card_array.each.with_index do |card, i|
-      error_msg_array.push("#{i + 1}番目のカード指定文字が不正です。(#{card})") if card_error?(card)
+      error_msg_array.push("#{i + 1}番目のカード指定文字が不正です。(#{card})") if incorrect_card_error?(card)
     end
     error_msg_array.blank? ? nil : error_msg_array
   end
 
   # 不正なカードがあるか？
-  def card_error?(card)
+  def incorrect_card_error?(card)
     true if card !~ CORRECT
   end
 
-
-
-  module_function :search_errors, :input_error, :class_error?, :duplicate_error, :card_error, :card_error?
-
+  module_function :search_errors, :input_error, :class_error?, :duplicate_error, :incorrect_card_error, :incorrect_card_error?
 end
 
