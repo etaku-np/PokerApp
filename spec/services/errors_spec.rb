@@ -83,7 +83,5 @@ RSpec.describe Errors, type: :service do
       let(:cards){ "F1 C0 C10 C10 S13 P89" }
       it { is_expected.to eq ["5つのカード指定文字を半角スペース区切りで入力してください。"] }
     end
-
   end
-
 end
