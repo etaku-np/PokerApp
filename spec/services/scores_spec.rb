@@ -29,7 +29,7 @@ RSpec.describe Scores, type: :service do
         # binding.pry
       end
 
-      it "turns the 2nd 'best' into false" do
+      it "turns the 2nd 'best' into true" do
         expect(new_results[1]["best"]).to eq true
       end
 
@@ -57,11 +57,11 @@ RSpec.describe Scores, type: :service do
         ]
       }
 
-      it "turns the 1st 'best' into false" do
+      it "turns the 1st 'best' into true" do
         expect(new_results[0]["best"]).to eq true
       end
 
-      it "turns the 2nd 'best' into false" do
+      it "turns the 2nd 'best' into true" do
         expect(new_results[1]["best"]).to eq true
       end
 
