@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe API::Ver1::Cards, type: :request do
   describe "POST API" do
-
     include API::Ver1
 
     # 結果のハッシュが入った配列を定義
@@ -15,7 +14,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
     end
 
     describe "the correct input" do
-
       shared_examples "returns Status: 200" do
         it "returns Status: 200" do
           expect(response.status).to eq 200
@@ -85,12 +83,9 @@ RSpec.describe API::Ver1::Cards, type: :request do
           expect(results.length + errors.length).to eq 4
         end
       end
-
     end
 
-
     describe "the incorrect input" do
-
       let(:error_msg) { JSON.parse(response.body)["errors"][0]["msg"] }
       shared_examples "returns Status: 400 and error massage" do
         it "returns Status: 400" do
@@ -120,12 +115,10 @@ RSpec.describe API::Ver1::Cards, type: :request do
         let(:params){ { "card": [] } }
         it_behaves_like "returns Status: 400 and error massage"
       end
-
     end
   end
 
   describe "GET API" do
-
     before do
       get "/api/v1"
     end
