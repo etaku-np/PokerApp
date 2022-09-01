@@ -16,14 +16,14 @@ module Hands
   end
 
   def combination
-    #とりあえず空の配列を作る
     @num_count_array = []
 
-    #ナンバーの組み合わせを配列で表示する。=> [1, 1, 3], [1, 4]
+    # 同じナンバーを数えて、それを配列で出す。
     (0..@num_array.uniq.length - 1).each do |n|
-      @num_count_array[n] = @num_array.count(@num_array.uniq[n])
-      @num_count_array.sort!
+      @num_count_array << @num_array.count(@num_array.uniq[n])
     end
+
+    @num_count_array.sort!
   end
 
   def four_card?
