@@ -53,10 +53,11 @@ module API
           "results" => @results,
           "errors" => @errors
         }
+
+        status 200
         # ハッシュの値が空の配列時、要素を削除する
         response.delete_if{ |_, value| value.empty? }
 
-        status 200
       end
     end
   end
