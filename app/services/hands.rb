@@ -19,8 +19,8 @@ module Hands
     @num_count_array = []
 
     # 同じナンバーを数えて、それを配列で出す。
-    (0..@num_array.uniq.length - 1).each do |n|
-      @num_count_array << @num_array.count(@num_array.uniq[n])
+    @num_array.uniq.each do |n|
+      @num_count_array << @num_array.count(n)
     end
 
     @num_count_array.sort!
