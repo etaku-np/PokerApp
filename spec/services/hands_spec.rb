@@ -100,7 +100,6 @@ RSpec.describe Hands, type: :service do
         let(:cards) { "D4 H8 S1 C10 D9" }
         it { is_expected.to eq 0 }
       end
-
     end
   end
 end
