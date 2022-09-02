@@ -3,7 +3,7 @@ module API
     class Cards < Grape::API
       include Hands
       include Errors
-      include Scores
+      include Best
 
       content_type :json, "application/json"
       format :json
@@ -47,7 +47,7 @@ module API
           end
         end
         # @resultsを、役最強部分を更新した状態に上書き。
-        @results = Scores.search_best(@score_array, @results)
+        @results = Best.search_best(@score_array, @results)
 
         response = {
           "results" => @results,

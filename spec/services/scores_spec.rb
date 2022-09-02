@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Scores, type: :service do
-  include Scores
+RSpec.describe Best, type: :service do
+  include Best
 
   describe "#search_best" do
 
-    let(:new_results) { Scores.search_best(score_array, results) }
+    let(:new_results) { Best.search_best(score_array, results) }
 
     context "when 2 sets of cards with different hands are entered" do
       let(:score_array) { [0, 4] }
