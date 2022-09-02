@@ -17,8 +17,8 @@ module Hands
 
   def combination
     @num_count_array = []
-    @num_array.uniq.each do |n| # 同じナンバーを数えて、それを配列で出す。
-      @num_count_array << @num_array.count(n)
+    @num_array.uniq.each do |num| # 同じナンバーを数えて、それを配列で出す。
+      @num_count_array << @num_array.count(num)
     end
     @num_count_array.sort!
   end
