@@ -40,7 +40,7 @@ module API
             @score_array << Hands.search_hands(card)[:score]
             result = {
               "cards" => card,
-              "hands" => Hands.search_hands(card)[:name],
+              "hand" => Hands.search_hands(card)[:name],
               "best" => Hands.search_hands(card)[:score]
             }
             @results << result

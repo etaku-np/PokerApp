@@ -35,7 +35,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
           expect(results.length).to eq 3
         end
         it "returns correct results" do
-          expect(results[2]["hands"]).to eq "フルハウス"
+          expect(results[2]["hand"]).to eq "フルハウス"
         end
         it "dose not display array of errors" do
           expect(errors).to eq nil
