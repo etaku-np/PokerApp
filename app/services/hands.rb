@@ -46,25 +46,37 @@ module Hands
   def judge
     combination
     if flush? && straight?
-      { :name => "ストレートフラッシュ", :score => 8 }
+      HAND_SET[:straight_flash]
     elsif four_card?
-      { :name => "フォーカード", :score => 7 }
+      HAND_SET[:four_card]
     elsif full_house?
-      { :name => "フルハウス", :score => 6 }
+      HAND_SET[:full_house]
     elsif flush?
-      { :name => "フラッシュ", :score => 5 }
+      HAND_SET[:flush]
     elsif straight?
-      { :name => "ストレート", :score => 4 }
+      HAND_SET[:straight]
     elsif three_card?
-      { :name => "スリーカード", :score => 3 }
+      HAND_SET[:three_card]
     elsif two_pair?
-      { :name => "ツーペア", :score => 2 }
+      HAND_SET[:two_pair]
     elsif one_pair?
-      { :name => "ワンペア", :score => 1 }
+      HAND_SET[:one_pair]
     else
-      { :name => "ハイカード", :score => 0 }
+      HAND_SET[:high_card]
     end
   end
+
+  HAND_SET = {
+    :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
+    :four_card => { :name => "フォーカード", :score => 7 },
+    :full_house => { :name => "フルハウス", :score => 6 },
+    :flush => { :name => "フラッシュ", :score => 5 },
+    :straight => { :name => "ストレート", :score => 4 },
+    :three_card => { :name => "スリーカード", :score => 3 },
+    :two_pair => { :name => "ツーペア", :score => 2 },
+    :one_pair => { :name => "ワンペア", :score => 1 },
+    :high_card => { :name => "ハイカード", :score => 0 }
+  }
 
   module_function :search_hands, :combination, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
