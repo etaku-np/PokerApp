@@ -1,29 +1,29 @@
 
-= atoneの試練 etaku
+== atoneの試練 etaku
 
 atoneの試練にて、ポーカーの役判定アプリを作りました。
 
 具体的には、WebAppとAPIの２つと、それをチェックするテストコードを書きました。
 
-= DEMO
+== DEMO
 
 仕様書　→　docs.google.com/presentation/d/1sj_A330Ei4CSqTKJxJ7EKiVe8HBWkDPQ8D6UPKHuJzM/edit#slide=id.p　
 
 サンプルページ　→　p0kerhands.herokuapp.com/
 
-= Features
+== Features
 
 特徴などを説明する
 
-= Requirement
+== Requirement
 
 * ruby 2.4.7p357 (2019-08-28 revision 67796) [-darwin21]
 
 * Rails 4.2.11.3
 
-= Usage
+== Usage
 
-== Webアプリケーション
+=== Webアプリケーション
 
 1.
 
@@ -33,17 +33,17 @@ atoneの試練にて、ポーカーの役判定アプリを作りました。
 
 4.
 
-== API
+=== API
 
 1.
 
 2.
 
-= Note
+== Note
 
 注意点などがあれば書く
 
-= Author
+== Author
 
 * etaku74r74n
 
