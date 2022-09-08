@@ -1,7 +1,6 @@
 module Hands
 
   def search_hands(cards)
-    #受け取ったカードを、スートとナンバーに分ける
     @suit_array = cards.scan(/[SHDC]/)
     @num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
     judge

@@ -2,7 +2,7 @@ CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 module Errors
 
   def search_errors(cards)
-    if cards.blank? # 入力が空白だけか？
+    if cards.blank?
       ["カードを入力してください。"]
     elsif class_error?(cards)
       ["文字列を入力してください。"]
@@ -12,22 +12,18 @@ module Errors
     end
   end
 
-  # 入力値が文字列以外か？
   def class_error?(cards)
     true if cards.class != String
   end
 
-  # カードが5枚以外か？
   def input_error(card_array)
     ["5つのカード指定文字を半角スペース区切りで入力してください。"] if card_array.length != 5
   end
 
-  # カードの重複に対するエラー文を出す
   def duplicate_error(card_array)
     ["カードが重複しています。"] if card_array.uniq.length != 5
   end
 
-  # 不正なカードに対するエラー文を配列で出す。
   def incorrect_card_error(card_array)
     error_msg_array = []
     card_array.each.with_index do |card, i|
@@ -36,7 +32,6 @@ module Errors
     error_msg_array.blank? ? nil : error_msg_array
   end
 
-  # 不正なカードがあるか？
   def incorrect_card_error?(card)
     true if card !~ CORRECT
   end
