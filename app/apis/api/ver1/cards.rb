@@ -22,26 +22,26 @@ module API
       end
 
       post do
-        cards = params[:cards]
+        cards_sets = params[:cards]
         @results = []
         @errors = []
         @score_array = []
 
-        error!({ errors: [{ msg: "入力内容を確認してください。"}] }, 400) if cards.empty?
+        error!({ errors: [{ msg: "入力内容を確認してください。"}] }, 400) if cards_sets.empty?
 
-        cards.each do |card|
-          if Errors.search_errors(card)
+        cards_sets.each do |cards_set|
+          if Errors.search_errors(cards_set)
             error = {
-              "cards" => card,
-              "msg" => Errors.search_errors(card)
+              "cards" => cards_set,
+              "msg" => Errors.search_errors(cards_set)
             }
             @errors << error
           else
-            @score_array << Hands.search_hands(card)[:score]
+            @score_array << Hands.search_hands(cards_set)[:score]
             result = {
-              "cards" => card,
-              "hand" => Hands.search_hands(card)[:name],
-              "best" => Hands.search_hands(card)[:score]
+              "cards" => cards_set,
+              "hand" => Hands.search_hands(cards_set)[:name],
+              "best" => Hands.search_hands(cards_set)[:score]
             }
             @results << result
           end
