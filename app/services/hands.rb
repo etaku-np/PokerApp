@@ -14,12 +14,8 @@ module Hands
     true if ( (@num_array.uniq.length == 5) && (@num_array.max - @num_array.min == 4) ) || @num_array == [1, 10, 11, 12, 13]
   end
 
-  def combination
-    @num_count_array = []
-    @num_array.uniq.each do |num| # 同じナンバーを数えて、それを配列で出す。
-      @num_count_array << @num_array.count(num)
-    end
-    @num_count_array.sort!
+  def combination # 同じナンバーを数えて配列で出す。
+    @num_count_array = (@num_array.uniq.map{ |num| @num_array.count(num) }).sort
   end
 
   def four_card?
