@@ -5,9 +5,9 @@ module API
       include Errors
       include Best
 
-      content_type :json, "application/json"
       format :json
       default_format :json
+      content_type :json, "application/json"
       content_type :xml, 'application/xml'
       content_type :javascript, 'application/javascript'
       content_type :txt, 'text/plain'
@@ -22,41 +22,34 @@ module API
       end
 
       post do
-        cards_sets = params[:cards]
-        @results = []
-        @errors = []
-        @score_array = []
+        cards_set = params[:cards]
+        error!({ errors: [{ msg: "入力内容を確認してください。" }] }, 400) if cards_set.empty?
 
-        error!({ errors: [{ msg: "入力内容を確認してください。"}] }, 400) if cards_sets.empty?
-
-        cards_sets.each do |cards_set|
-          if Errors.search_errors(cards_set)
-            error = {
-              "cards" => cards_set,
-              "msg" => Errors.search_errors(cards_set)
-            }
-            @errors << error
-          else
-            @score_array << Hands.search_hands(cards_set)[:score]
-            result = {
-              "cards" => cards_set,
-              "hand" => Hands.search_hands(cards_set)[:name],
-              "best" => Hands.search_hands(cards_set)[:score]
-            }
-            @results << result
-          end
+        # エラーがないカードは、役を判定する
+        correct_cards_set = cards_set.select { |cards| Errors.search_errors(cards).nil? }
+        @results = correct_cards_set.map do |cards|
+          {
+            "cards" => cards,
+            "hand" => Hands.search_hands(cards)[:name],
+            "best" => Hands.search_hands(cards)[:score]
+          }
         end
-        # @resultsを、役最強部分を更新した状態に上書き。
+        @score_array = correct_cards_set.map{ |cards| Hands.search_hands(cards)[:score] }
+        # @resultsを、役最強部分を更新した状態に上書き
         @results = Best.search_best(@score_array, @results)
 
-        response = {
-          "results" => @results,
-          "errors" => @errors
-        }
-
+        # エラーがあるコードは、エラーを判定する
+        incorrect_cards_set = cards_set - correct_cards_set
+        @errors = incorrect_cards_set.map do |cards|
+          {
+            "cards" => cards,
+            "msg" => Errors.search_errors(cards)
+          }
+        end
+        response = { "results" => @results, "errors" => @errors }
         status 200
-        # ハッシュの値が空の配列時、要素を削除する
-        response.delete_if{ |_, value| value.empty? }
+        # 役またはエラーのみの場合、空の配列を表示しない
+        response.delete_if{ |_, v| v.empty? }
       end
     end
   end
