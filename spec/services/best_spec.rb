@@ -26,7 +26,6 @@ RSpec.describe Best, type: :service do
 
       it "turns the 1st 'best' into false" do
         expect(new_results[0]["best"]).to eq false
-        # binding.pry
       end
 
       it "turns the 2nd 'best' into true" do
