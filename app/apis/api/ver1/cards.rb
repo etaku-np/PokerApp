@@ -29,9 +29,9 @@ module API
         correct_cards_set = cards_set.select { |cards| Errors.search_errors(cards).nil? }
         @results = correct_cards_set.map do |cards|
           {
-            "cards" => cards,
-            "hand" => Hands.search_hands(cards)[:name],
-            "best" => Hands.search_hands(cards)[:score]
+            "cards" =>  cards,
+            "hand"  =>  Hands.search_hands(cards)[:name],
+            "best"  =>  Hands.search_hands(cards)[:score]
           }
         end
         @score_array = correct_cards_set.map{ |cards| Hands.search_hands(cards)[:score] }
@@ -42,8 +42,8 @@ module API
         incorrect_cards_set = cards_set - correct_cards_set
         @errors = incorrect_cards_set.map do |cards|
           {
-            "cards" => cards,
-            "msg" => Errors.search_errors(cards)
+            "cards" =>  cards,
+            "msg"   =>  Errors.search_errors(cards)
           }
         end
         response = { "results" => @results, "errors" => @errors }
