@@ -1,5 +1,17 @@
 module Hands
 
+  HAND_SET = {
+    :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
+    :four_card => { :name => "フォーカード", :score => 7 },
+    :full_house => { :name => "フルハウス", :score => 6 },
+    :flush => { :name => "フラッシュ", :score => 5 },
+    :straight => { :name => "ストレート", :score => 4 },
+    :three_card => { :name => "スリーカード", :score => 3 },
+    :two_pair => { :name => "ツーペア", :score => 2 },
+    :one_pair => { :name => "ワンペア", :score => 1 },
+    :high_card => { :name => "ハイカード", :score => 0 }
+  }
+
   def search_hands(cards)
     @suit_array = cards.scan(/[SHDC]/)
     @num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
@@ -60,18 +72,6 @@ module Hands
       HAND_SET[:high_card]
     end
   end
-
-  HAND_SET = {
-    :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
-    :four_card => { :name => "フォーカード", :score => 7 },
-    :full_house => { :name => "フルハウス", :score => 6 },
-    :flush => { :name => "フラッシュ", :score => 5 },
-    :straight => { :name => "ストレート", :score => 4 },
-    :three_card => { :name => "スリーカード", :score => 3 },
-    :two_pair => { :name => "ツーペア", :score => 2 },
-    :one_pair => { :name => "ワンペア", :score => 1 },
-    :high_card => { :name => "ハイカード", :score => 0 }
-  }
 
   module_function :search_hands, :combination, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
