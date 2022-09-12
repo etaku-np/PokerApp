@@ -35,8 +35,8 @@ module API
             }
           end
 
-          response = { "results" => results, "errors" => errors }
           status 200
+          response = { "results" => results, "errors" => errors }
           present response.delete_if{ |_, v| v.empty? }
         end
       end
