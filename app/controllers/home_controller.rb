@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  include Hands
-  include Errors
+  include HandService
+  include ErrorService
 
   def top
   end
@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     flash[:cards] = cards
 
     # エラーメッセージがあればそれを、なければ（何かの役になっているはずなので）役の判定を出す。
-    message = Errors.validate_cards(cards) || Hands.judge_cards(cards)[:name]
+    message = ErrorService.validate_cards(cards) || HandService.judge_cards(cards)[:name]
 
     # 配列になっている場合は改行して出す。そうでなければそのまま。
     flash[:message] = message.is_a?(Array) ? message.join("\n") : message
