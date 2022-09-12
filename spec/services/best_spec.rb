@@ -5,7 +5,7 @@ RSpec.describe Best, type: :service do
 
   describe "#search_best" do
 
-    let(:new_results) { Best.search_best(score_array, results) }
+    let(:new_results) { Best.judge_best(score_array, results) }
 
     context "when 2 sets of cards with different hands are entered" do
       let(:score_array) { [0, 4] }

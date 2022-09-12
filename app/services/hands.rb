@@ -12,7 +12,7 @@ module Hands
     :high_card => { :name => "ハイカード", :score => 0 }
   }
 
-  def search_hands(cards)
+  def judge_cards(cards)
     @suit_array = cards.scan(/[SHDC]/)
     @num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
     judge
@@ -73,7 +73,7 @@ module Hands
     end
   end
 
-  module_function :search_hands, :combination, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
+  module_function :judge_cards, :combination, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
 end
 

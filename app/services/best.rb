@@ -1,5 +1,5 @@
 module Best
-  def search_best(score_array, results)
+  def judge_best(score_array, results)
     score_array.each_with_index do |_, i|
       score = results[i]["best"]
       true_or_false = (score == score_array.max)
@@ -7,5 +7,5 @@ module Best
     end
     results
   end
-  module_function :search_best
+  module_function :judge_best
 end
