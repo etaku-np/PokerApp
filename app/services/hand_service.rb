@@ -1,5 +1,5 @@
 module HandService
-
+  # 入力されたカードの役を判定するモジュールです
   HAND_SET = {
     :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
     :four_card => { :name => "フォーカード", :score => 7 },

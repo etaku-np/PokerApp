@@ -1,5 +1,6 @@
-CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 module ErrorService
+  # 入力されたカードの不正な入力を判定するモジュールです
+  CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 
   def validate_cards(cards)
     if cards.blank?
