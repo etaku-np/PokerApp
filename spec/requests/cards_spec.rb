@@ -10,7 +10,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
     let(:errors){ JSON.parse(response.body)["errors"] }
 
     before do
-      post "/api/v1", params
+      post "/api/v1/poker", params
     end
 
     describe "the correct input" do
@@ -120,7 +120,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
 
   describe "GET API" do
     before do
-      get "/api/v1"
+      get "/api/v1/poker"
     end
 
     it "returns Status: 400" do
