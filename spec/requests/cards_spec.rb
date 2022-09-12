@@ -115,6 +115,23 @@ RSpec.describe API::Ver1::Cards, type: :request do
         let(:params){ { "card": [] } }
         it_behaves_like "returns Status: 400 and error massage"
       end
+
+      context "when there are duplicate cards" do
+        let(:params){
+          {
+            "cards": [
+              "C2 C3 C4 C5 C6",
+              "C2 C3 C4 C5 C6"
+            ]
+          }
+        }
+        it "returns Status: 400" do
+          expect(response.status).to eq 400
+        end
+        it "returns error message" do
+          expect(error_msg).to eq "入力内容が重複しています。"
+        end
+      end
     end
   end
 
