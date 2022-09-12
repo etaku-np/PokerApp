@@ -1,7 +1,7 @@
 CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 module Errors
 
-  def search_errors(cards)
+  def validate_cards(cards)
     if cards.blank?
       ["カードを入力してください。"]
     elsif class_error?(cards)
@@ -36,6 +36,6 @@ module Errors
     true if card !~ CORRECT
   end
 
-  module_function :search_errors, :input_error, :class_error?, :duplicate_error, :incorrect_card_error, :incorrect_card_error?
+  module_function :validate_cards, :input_error, :class_error?, :duplicate_error, :incorrect_card_error, :incorrect_card_error?
 end
 

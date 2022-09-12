@@ -5,7 +5,7 @@ RSpec.describe Errors, type: :service do
 
   describe "#search_errors" do
 
-    subject { Errors.search_errors(cards) }
+    subject { Errors.validate_cards(cards) }
 
     context "when no card is entered" do
       let(:cards) { nil }
