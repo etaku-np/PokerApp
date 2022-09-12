@@ -15,7 +15,7 @@ module HandService
   def judge_cards(cards)
     suit_array = cards.scan(/[SHDC]/)
     num_array = cards.scan(/1[0-3]|[1-9]/).map(&:to_i).sort
-    num_count_array = (num_array.uniq.map{ |num| num_array.count(num) }).sort # ナンバーを数えて、それを配列にする
+    num_count_array = (num_array.uniq.map{ |num| num_array.count(num) }).sort # 重複するナンバーを数えて、それを配列にする
     judge(suit_array, num_array, num_count_array)
   end
 
