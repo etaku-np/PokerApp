@@ -1,4 +1,4 @@
-module Hands
+module HandService
 
   HAND_SET = {
     :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },

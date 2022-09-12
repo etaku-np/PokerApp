@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Errors, type: :service do
-  include Errors
+RSpec.describe ErrorService, type: :service do
+  include ErrorService
 
   describe "#search_errors" do
 
-    subject { Errors.validate_cards(cards) }
+    subject { ErrorService.validate_cards(cards) }
 
     context "when no card is entered" do
       let(:cards) { nil }

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Hands, type: :service do
-  include Hands
+RSpec.describe HandService, type: :service do
+  include HandService
 
   describe "#search_hands" do
-    let(:judge_cards){ Hands.judge_cards(cards) }
+    let(:judge_cards){ HandService.judge_cards(cards) }
 
     context "when the hand is Straight Flush" do
       let(:cards) { "H13 H1 H11 H12 H10" }

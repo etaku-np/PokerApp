@@ -1,4 +1,4 @@
-module Best
+module BestService
   def judge_best(score_array, results)
     score_array.each_with_index do |_, i|
       score = results[i]["best"]

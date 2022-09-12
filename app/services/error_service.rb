@@ -1,5 +1,5 @@
 CORRECT =/^([SHDC])([1-9]|1[0-3])$/
-module Errors
+module ErrorService
 
   def validate_cards(cards)
     if cards.blank?
