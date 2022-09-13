@@ -4,9 +4,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
   describe "POST API" do
     include API::Ver1
 
-    # 結果のハッシュが入った配列を定義
     let(:results){ JSON.parse(response.body)["results"] }
-    # エラーのハッシュが入った配列を定義
     let(:errors){ JSON.parse(response.body)["errors"] }
 
     before do
