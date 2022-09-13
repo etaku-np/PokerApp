@@ -13,8 +13,7 @@ module API
           error!({ errors: [{ msg: "入力内容を確認してください。" }] }, 400) if cards_set.empty?
           error!({ errors: [{ msg: "入力内容が重複しています。" }] }, 400) if cards_set != cards_set.uniq
           status 200
-          response = PokerService.api(cards_set)
-          present response.delete_if{ |_, v| v.empty? }
+          PokerService.api(cards_set)
         end
       end
     end

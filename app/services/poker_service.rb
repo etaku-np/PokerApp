@@ -29,7 +29,8 @@ module PokerService
       }
     end
 
-    { "results" => results, "errors" => errors }
+    response = { "results" => results, "errors" => errors }
+    response.delete_if{ |_, v| v.empty? }
   end
   module_function :webapp, :api
 end
