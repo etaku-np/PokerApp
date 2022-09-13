@@ -13,14 +13,14 @@ RSpec.describe API::Ver1::Cards, type: :request do
       post "/api/v1/poker", params
     end
 
-    describe "the correct input" do
+    describe "the valid input" do
       shared_examples "returns Status: 200" do
         it "returns Status: 200" do
           expect(response.status).to eq 200
         end
       end
 
-      context "when only correct cards are entered" do
+      context "when only valid cards are entered" do
         let(:params){
           {
             "cards": [
@@ -42,7 +42,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
         end
       end
 
-      context "when only incorrect cards are entered" do
+      context "when only invalid cards are entered" do
         let(:params){
           {
             "cards": [
@@ -85,7 +85,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
       end
     end
 
-    describe "the incorrect input" do
+    describe "the invalid input" do
       let(:error_msg) { JSON.parse(response.body)["errors"][0]["msg"] }
       shared_examples "returns Status: 400 and error massage" do
         it "returns Status: 400" do
@@ -116,7 +116,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
         it_behaves_like "returns Status: 400 and error massage"
       end
 
-      context "when there are duplicate cards" do
+      context "when a duplicate pair of cards is entered" do
         let(:params){
           {
             "cards": [

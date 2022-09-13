@@ -1,14 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe BestService, type: :service do
-  include BestService
+RSpec.describe PokerBest, type: :module do
+  include PokerBest
 
-  describe "#search_best" do
+  describe "#judge_best" do
 
-    let(:new_results) { BestService.judge_best(score_array, results) }
+    let(:new_results) { PokerBest.judge_best(results) }
 
     context "when 2 sets of cards with different hands are entered" do
-      let(:score_array) { [0, 4] }
       let(:results) {
         [
           {
@@ -35,7 +34,6 @@ RSpec.describe BestService, type: :service do
     end
 
     context "when 3 sets of cards with different hands are entered" do
-      let(:score_array) { [8, 8, 6] }
       let(:results) {
         [
           {
