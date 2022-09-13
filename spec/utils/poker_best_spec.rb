@@ -4,7 +4,6 @@ RSpec.describe PokerBest, type: :module do
   include PokerBest
 
   describe "#judge_best" do
-
     let(:new_results) { PokerBest.judge_best(results) }
 
     context "when 2 sets of cards with different hands are entered" do
@@ -30,7 +29,6 @@ RSpec.describe PokerBest, type: :module do
       it "turns the 2nd 'best' into true" do
         expect(new_results[1]["best"]).to eq true
       end
-
     end
 
     context "when 3 sets of cards with different hands are entered" do
@@ -65,9 +63,6 @@ RSpec.describe PokerBest, type: :module do
       it "turns the 3rd 'best' into false" do
         expect(new_results[2]["best"]).to eq false
       end
-
     end
-
   end
-
 end

@@ -7,7 +7,7 @@ RSpec.describe PokerHand, type: :module do
     let(:judge_cards){ PokerHand.judge_cards(cards) }
 
     context "when the hand is Straight Flush" do
-      let(:cards) { "H13 H1 H11 H12 H10" }
+      let(:cards){ "H13 H1 H11 H12 H10" }
       it "returns \"ストレートフラッシュ\"" do
         expect(judge_cards[:name]).to eq "ストレートフラッシュ"
       end
@@ -17,7 +17,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Four of a kind" do
-      let(:cards) { "S13 H13 D13 C8 C13" }
+      let(:cards){ "S13 H13 D13 C8 C13" }
       it "returns \"フォーカード\"" do
         expect(judge_cards[:name]).to eq "フォーカード"
       end
@@ -27,7 +27,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Full House" do
-      let(:cards) { "D8 S2 C8 H8 C2" }
+      let(:cards){ "D8 S2 C8 H8 C2" }
       it "returns \"フルハウス\"" do
         expect(judge_cards[:name]).to eq "フルハウス"
       end
@@ -37,7 +37,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Flush" do
-      let(:cards) { "S1 S4 S11 S2 S3" }
+      let(:cards){ "S1 S4 S11 S2 S3" }
       it "returns \"フラッシュ\"" do
         expect(judge_cards[:name]).to eq "フラッシュ"
       end
@@ -47,7 +47,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Straight" do
-      let(:cards) { "S2 H3 D1 H4 C5" }
+      let(:cards){ "S2 H3 D1 H4 C5" }
       it "returns \"ストレート\"" do
         expect(judge_cards[:name]).to eq "ストレート"
       end
@@ -57,7 +57,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Three of a kind" do
-      let(:cards) { "H7 S9 D9 C3 H9" }
+      let(:cards){ "H7 S9 D9 C3 H9" }
       it "returns \"スリーカード\"" do
         expect(judge_cards[:name]).to eq "スリーカード"
       end
@@ -67,7 +67,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Two pair" do
-      let(:cards) { "C4 H7 H11 C7 D4" }
+      let(:cards){ "C4 H7 H11 C7 D4" }
       it "returns \"ツーペア\"" do
         expect(judge_cards[:name]).to eq "ツーペア"
       end
@@ -77,7 +77,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is Pair" do
-      let(:cards) { "H10 H5 D13 S6 S10" }
+      let(:cards){ "H10 H5 D13 S6 S10" }
       it "returns \"ワンペア\"" do
         expect(judge_cards[:name]).to eq "ワンペア"
       end
@@ -87,7 +87,7 @@ RSpec.describe PokerHand, type: :module do
     end
 
     context "when the hand is High card" do
-      let(:cards) { "D4 H8 S1 C10 D9" }
+      let(:cards){ "D4 H8 S1 C10 D9" }
       it "returns \"ハイカード\"" do
         expect(judge_cards[:name]).to eq "ハイカード"
       end
