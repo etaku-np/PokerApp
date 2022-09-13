@@ -29,15 +29,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
           }
         }
         it_behaves_like "returns Status: 200"
-        it "returns 3 results" do
-          expect(results.length).to eq 3
-        end
-        it "returns correct results" do
-          expect(results[2]["hand"]).to eq "フルハウス"
-        end
-        it "dose not display array of errors" do
-          expect(errors).to eq nil
-        end
       end
 
       context "when only invalid cards are entered" do
@@ -51,18 +42,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
           }
         }
         it_behaves_like "returns Status: 200"
-        it "returns 3 errors" do
-          expect(errors.length).to eq 3
-        end
-        it "returns correct errors" do
-          expect(errors[0]["msg"]).to eq ["カードを入力してください。"]
-        end
-        it "returns correct errors" do
-          expect(errors[2]["msg"]).to eq ["カードが重複しています。"]
-        end
-        it "dose not display array of results" do
-          expect(results).to eq nil
-        end
       end
 
       context "when mixed cards are entered" do
@@ -77,9 +56,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
           }
         }
         it_behaves_like "returns Status: 200"
-        it "returns results and errors" do
-          expect(results.length + errors.length).to eq 4
-        end
       end
     end
 
