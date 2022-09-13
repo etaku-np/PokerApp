@@ -5,7 +5,6 @@ module PokerService
   include PokerBest
 
   def webapp(cards)
-    # エラーメッセージがあればそれを、なければ（何かの役になっているはずなので）役の判定を出す。
     PokerValidation.validate_cards(cards) || PokerHand.judge_cards(cards)[:name]
   end
 
@@ -32,5 +31,6 @@ module PokerService
     response = { "results" => results, "errors" => errors }
     response.delete_if{ |_, v| v.empty? }
   end
+
   module_function :webapp, :api
 end
