@@ -1,4 +1,4 @@
-module HandService
+module PokerHand
   # 入力されたカードの役を判定するモジュールです
   HAND_SET = {
     :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
