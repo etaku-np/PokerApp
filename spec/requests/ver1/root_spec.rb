@@ -32,11 +32,6 @@ RSpec.describe API::Ver1::Root, type: :request do
         it_behaves_like "returns Status: 400 and error massage"
       end
 
-      context "when nothing is entered in array" do
-        let(:params){ { "cards": [] } }
-        it_behaves_like "returns Status: 400 and error massage"
-      end
-
       context "when the key is incorrect" do
         let(:params){ { "card": [] } }
         it_behaves_like "returns Status: 400 and error massage"

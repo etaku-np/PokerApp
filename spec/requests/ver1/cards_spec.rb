@@ -77,6 +77,20 @@ RSpec.describe API::Ver1::Cards, type: :request do
           expect(error_msg).to eq "入力内容が重複しています。"
         end
       end
+
+      context "when nothing is entered in array" do
+        let(:params){
+          {
+            "cards": []
+          }
+        }
+        it "returns Status: 400" do
+          expect(response.status).to eq 400
+        end
+        it "returns error message" do
+          expect(error_msg).to eq "入力形式を確認してください。"
+        end
+      end
     end
   end
 end
