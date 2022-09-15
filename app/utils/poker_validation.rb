@@ -27,8 +27,8 @@ module PokerValidation
 
   def invalid_num_or_suit(card_array)
     error_msg_array = []
-    card_array.each.with_index do |card, i|
-      error_msg_array.push("#{i + 1}番目のカード指定文字が不正です。(#{card})") if invalid_num_or_suit?(card)
+    card_array.each.with_index(1) do |card, i|
+      error_msg_array.push("#{i}番目のカード指定文字が不正です。(#{card})") if invalid_num_or_suit?(card)
     end
     error_msg_array.blank? ? nil : error_msg_array
   end
