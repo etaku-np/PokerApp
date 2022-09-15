@@ -61,6 +61,12 @@ RSpec.describe API::Ver1::Cards, type: :request do
 
     describe "the invalid input" do
       let(:error_msg) { JSON.parse(response.body)["errors"][0]["msg"] }
+      shared_examples "returns Status: 400" do
+        it "returns Status: 400" do
+          expect(response.status).to eq 400
+        end
+      end
+
       context "when a duplicate pair of cards is entered" do
         let(:params){
           {
@@ -70,9 +76,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
             ]
           }
         }
-        it "returns Status: 400" do
-          expect(response.status).to eq 400
-        end
+        it_behaves_like "returns Status: 400"
         it "returns error message" do
           expect(error_msg).to eq "入力内容が重複しています。"
         end
@@ -84,9 +88,7 @@ RSpec.describe API::Ver1::Cards, type: :request do
             "cards": []
           }
         }
-        it "returns Status: 400" do
-          expect(response.status).to eq 400
-        end
+        it_behaves_like "returns Status: 400"
         it "returns error message" do
           expect(error_msg).to eq "入力形式を確認してください。"
         end
