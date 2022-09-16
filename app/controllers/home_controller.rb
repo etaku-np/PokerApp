@@ -8,9 +8,7 @@ class HomeController < ApplicationController
     cards = params[:cards]
     flash[:cards] = cards
 
-    message = PokerService.webapp(cards)
-
-    # 配列になっている場合は改行して出す。そうでなければそのまま。
+    message = PokerService.judge_results(cards)
     flash[:message] = message.is_a?(Array) ? message.join("\n") : message
 
     redirect_to("/")
