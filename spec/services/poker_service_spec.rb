@@ -23,8 +23,8 @@ RSpec.describe PokerService, type: :service do
   end
 
   describe "#api" do
-    let(:results){ PokerService.api(cards_set)["results"] }
-    let(:errors){ PokerService.api(cards_set)["errors"] }
+    let(:results){ PokerService.compare_results(cards_set)["results"] }
+    let(:errors){ PokerService.compare_results(cards_set)["errors"] }
 
     context "when only valid cards are entered" do
       let(:cards_set){
