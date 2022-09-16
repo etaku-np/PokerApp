@@ -4,11 +4,11 @@ module PokerService
   include PokerHand
   include PokerBest
 
-  def webapp(cards)
+  def judge_results(cards)
     PokerValidation.validate_cards(cards) || PokerHand.judge_cards(cards)[:name]
   end
 
-  def api(cards_set)
+  def compare_results(cards_set)
     invalid_cards_set = cards_set.select { |cards| PokerValidation.validate_cards(cards)&.any? }
     errors = invalid_cards_set.map do |cards|
       {
@@ -32,5 +32,5 @@ module PokerService
     response.delete_if{ |_, v| v.empty? }
   end
 
-  module_function :webapp, :api
+  module_function :judge_results, :compare_results
 end
