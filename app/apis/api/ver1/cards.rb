@@ -12,7 +12,7 @@ module API
           cards_set = params[:cards]
           error!({ errors: [{ msg: "入力内容を確認してください。" }] }, 400) if cards_set.empty?
           error!({ errors: [{ msg: "入力内容が重複しています。" }] }, 400) if cards_set != cards_set.uniq
-          present PokerService.api(cards_set)
+          present PokerService.compare_results(cards_set)
           status 200
         end
       end
