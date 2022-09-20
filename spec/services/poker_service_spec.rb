@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.describe PokerService, type: :service do
   include PokerService
 
-  describe "#webapp" do
+  describe "#judge_results" do
     let(:error){ PokerValidation.validate_cards(cards) }
     let(:result){ PokerHand.judge_cards(cards)[:name] }
 
-    context "when the input is invalid" do
+    context "with error, no hand" do
       let(:cards){ "H6 C8 C1 D10" }
       it "returns an error" do
         expect(error||result).to eq error
       end
     end
 
-    context "when the input is valid" do
+    context "with hand, no error" do
       let(:cards){ "H6 C8 C1 D10 S1" }
       it "returns a result" do
         expect(error||result).to eq result
@@ -22,7 +22,7 @@ RSpec.describe PokerService, type: :service do
     end
   end
 
-  describe "#api" do
+  describe "#compare_results" do
     let(:results){ PokerService.compare_results(cards_set)["results"] }
     let(:errors){ PokerService.compare_results(cards_set)["errors"] }
 
