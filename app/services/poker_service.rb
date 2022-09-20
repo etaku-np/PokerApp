@@ -9,6 +9,9 @@ module PokerService
   end
 
   def compare_results(cards_set)
+    error!({ errors: [{ msg: "入力内容を確認してください。" }] }, 400) if cards_set.empty?
+    error!({ errors: [{ msg: "入力内容が重複しています。" }] }, 400) if cards_set != cards_set.uniq
+
     invalid_cards_set = cards_set.select { |cards| PokerValidation.validate_cards(cards)&.any? }
     errors = invalid_cards_set.map do |cards|
       {
