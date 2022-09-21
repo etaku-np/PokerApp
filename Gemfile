@@ -53,5 +53,4 @@ group :development, :test do
 end
 
 gem 'pry-byebug', group: :development
-gem 'pry-nav'
 gem 'simplecov'
