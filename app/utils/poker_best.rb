@@ -1,5 +1,5 @@
+# 判定された複数の役に基づき、そのうち最も強い役を判定
 module PokerBest
-  # 判定された複数の役に基づき、そのうち最も強い役を判定するモジュールです
   def judge_best(results)
     score_array = results.map{ |result| result[:best] }
 
