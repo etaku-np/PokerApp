@@ -1,15 +1,15 @@
 module PokerHand
   # 入力されたカードの役を判定するモジュールです
   HAND_SET = {
-    :straight_flash => { :name => "ストレートフラッシュ", :score => 8 },
-    :four_card => { :name => "フォーカード", :score => 7 },
-    :full_house => { :name => "フルハウス", :score => 6 },
-    :flush => { :name => "フラッシュ", :score => 5 },
-    :straight => { :name => "ストレート", :score => 4 },
-    :three_card => { :name => "スリーカード", :score => 3 },
-    :two_pair => { :name => "ツーペア", :score => 2 },
-    :one_pair => { :name => "ワンペア", :score => 1 },
-    :high_card => { :name => "ハイカード", :score => 0 }
+    straight_flash: { name: "ストレートフラッシュ", score: 8 },
+    four_card: { name: "フォーカード", score: 7 },
+    full_house: { name: "フルハウス", score: 6 },
+    flush: { name: "フラッシュ", score: 5 },
+    straight: { name: "ストレート", score: 4 },
+    three_card: { name: "スリーカード", score: 3 },
+    two_pair: { name: "ツーペア", score: 2 },
+    one_pair: { name: "ワンペア", score: 1 },
+    high_card: { name: "ハイカード", score: 0 }
   }
 
   def judge_cards(cards)
