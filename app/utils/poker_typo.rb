@@ -14,7 +14,7 @@ module PokerValidation
   end
 
   def invalid_class?(cards)
-    true if cards.class != String
+    true unless cards.is_a?(String)
   end
 
   def invalid_total_cards?(card_array)
