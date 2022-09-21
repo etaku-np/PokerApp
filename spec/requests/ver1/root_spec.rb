@@ -4,8 +4,8 @@ RSpec.describe API::Ver1::Root, type: :request do
   include API::Ver1
 
   describe "POST API" do
-    let(:results){ JSON.parse(response.body)["results"] }
-    let(:errors){ JSON.parse(response.body)["errors"] }
+    let(:results){ JSON.parse(response.body)[:results] }
+    let(:errors){ JSON.parse(response.body)[:errors] }
 
     before do
       post "/api/v1/poker", params
