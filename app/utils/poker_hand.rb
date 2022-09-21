@@ -13,7 +13,7 @@ module PokerHand
   }
 
   def judge(cards)
-    if flush?(cards) && straight?(cards)
+    if straight_flash?(cards)
       HAND_SET[:straight_flash]
     elsif four_card?(cards)
       HAND_SET[:four_card]
@@ -47,6 +47,10 @@ module PokerHand
     (num_array.uniq.map{ |num| num_array.count(num) }).sort
   end
 
+  def straight_flash?(cards)
+    flush?(cards) && straight?(cards)
+  end
+
   def flush?(cards)
     true if suit_array(cards).uniq.length == 1
   end
@@ -76,6 +80,6 @@ module PokerHand
     true if num_count_array(cards) == [1, 1, 1, 2]
   end
 
-  module_function :suit_array, :num_array, :num_count_array, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
+  module_function :suit_array, :num_array, :num_count_array, :straight_flash?, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
 end
