@@ -1,4 +1,4 @@
-module PokerValidation
+module PokerTypo
   # 入力されたカードの不正な入力を判定するモジュールです
   CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 
