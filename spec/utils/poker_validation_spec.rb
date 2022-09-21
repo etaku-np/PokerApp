@@ -4,7 +4,7 @@ RSpec.describe PokerTypo, type: :module do
   include PokerTypo
 
   describe "#validate_cards" do
-    subject { PokerTypo.validate_cards(cards) }
+    subject { PokerTypo.check_typo_cards(cards) }
 
     context "when no card is entered" do
       let(:cards) { nil }

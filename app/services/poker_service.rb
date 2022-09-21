@@ -5,15 +5,15 @@ module PokerService
   include PokerBest
 
   def judge_results(cards)
-    PokerTypo.validate_cards(cards) || PokerHand.judge_cards(cards)[:name]
+    PokerTypo.check_typo_cards(cards) || PokerHand.judge_cards(cards)[:name]
   end
 
   def compare_results(cards_set)
-    invalid_cards_set = cards_set.select { |cards| PokerTypo.validate_cards(cards)&.any? }
+    invalid_cards_set = cards_set.select { |cards| PokerTypo.check_typo_cards(cards)&.any? }
     errors = invalid_cards_set.map do |cards|
       {
         cards: cards,
-        msg: PokerTypo.validate_cards(cards)
+        msg: PokerTypo.check_typo_cards(cards)
       }
     end
 
