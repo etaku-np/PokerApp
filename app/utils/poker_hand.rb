@@ -12,35 +12,6 @@ module PokerHand
     high_card: { name: "ハイカード", score: 0 }
   }
 
-  def flush?(cards)
-    true if suit_array(cards).uniq.length == 1
-  end
-
-  def straight?(cards)
-    num_array = num_array(cards)
-    true if ( (num_array.uniq.length == 5) && (num_array.max - num_array.min == 4) ) || num_array == [1, 10, 11, 12, 13]
-  end
-
-  def four_card?(cards)
-    true if num_count_array(cards) == [1, 4]
-  end
-
-  def full_house?(cards)
-    true if num_count_array(cards) == [2, 3]
-  end
-
-  def three_card?(cards)
-    true if num_count_array(cards) == [1, 1, 3]
-  end
-
-  def two_pair?(cards)
-    true if num_count_array(cards) == [1, 2, 2]
-  end
-
-  def one_pair?(cards)
-    true if num_count_array(cards) == [1, 1, 1, 2]
-  end
-
   def judge(cards)
     if flush?(cards) && straight?(cards)
       HAND_SET[:straight_flash]
@@ -76,7 +47,35 @@ module PokerHand
     (num_array.uniq.map{ |num| num_array.count(num) }).sort
   end
 
+  def flush?(cards)
+    true if suit_array(cards).uniq.length == 1
+  end
+
+  def straight?(cards)
+    num_array = num_array(cards)
+    true if ( (num_array.uniq.length == 5) && (num_array.max - num_array.min == 4) ) || num_array == [1, 10, 11, 12, 13]
+  end
+
+  def four_card?(cards)
+    true if num_count_array(cards) == [1, 4]
+  end
+
+  def full_house?(cards)
+    true if num_count_array(cards) == [2, 3]
+  end
+
+  def three_card?(cards)
+    true if num_count_array(cards) == [1, 1, 3]
+  end
+
+  def two_pair?(cards)
+    true if num_count_array(cards) == [1, 2, 2]
+  end
+
+  def one_pair?(cards)
+    true if num_count_array(cards) == [1, 1, 1, 2]
+  end
+
   module_function :suit_array, :num_array, :num_count_array, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
 end
-
