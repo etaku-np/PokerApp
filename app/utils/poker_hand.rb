@@ -12,10 +12,6 @@ module PokerHand
     high_card: { name: "ハイカード", score: 0 }
   }
 
-  def judge_cards(cards)
-    judge(cards)
-  end
-
   def flush?(cards)
     true if suit_array(cards).uniq.length == 1
   end
@@ -80,7 +76,7 @@ module PokerHand
     (num_array.uniq.map{ |num| num_array.count(num) }).sort
   end
 
-  module_function :judge_cards, :suit_array, :num_array, :num_count_array, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
+  module_function :suit_array, :num_array, :num_count_array, :flush?, :straight?, :full_house?, :four_card?, :three_card?, :two_pair?, :one_pair?, :judge
 
 end
 

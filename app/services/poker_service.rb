@@ -5,7 +5,7 @@ module PokerService
   include PokerBest
 
   def judge_results(cards)
-    PokerTypo.check_typo_cards(cards) || PokerHand.judge_cards(cards)[:name]
+    PokerTypo.check_typo_cards(cards) || PokerHand.judge(cards)[:name]
   end
 
   def compare_results(cards_set)
@@ -19,7 +19,7 @@ module PokerService
 
     valid_cards_set = cards_set - invalid_cards_set
     results = valid_cards_set.map do |cards|
-      judge_result = PokerHand.judge_cards(cards)
+      judge_result = PokerHand.judge(cards)
       {
         cards: cards,
         hand: judge_result[:name],
