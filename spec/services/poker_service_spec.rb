@@ -5,7 +5,7 @@ RSpec.describe PokerService, type: :service do
 
   describe "#judge_results" do
     let(:error){ PokerTypo.check_typo_cards(cards) }
-    let(:result){ PokerHand.judge_cards(cards)[:name] }
+    let(:result){ PokerHand.judge(cards)[:name] }
 
     context "with error, no hand" do
       context "when the number of cards is other than 5" do
