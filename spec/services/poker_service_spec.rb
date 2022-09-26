@@ -82,5 +82,28 @@ RSpec.describe PokerService, type: :service do
         expect(errors.map{|error| error[:msg]}).to eq [["1番目のカード指定文字が不正です。(F3)"], ["カードが重複しています。"]]
       end
     end
+
+    describe "the invalid input" do
+      let(:error_msg) { PokerService.cards_set_error_msg(cards_set)[:errors][0][:msg] }
+
+      context "when a duplicate pair of cards is entered" do
+        let(:cards_set){
+          [
+            "C2 C3 C4 C5 C6",
+            "C2 C3 C4 C5 C6"
+          ]
+        }
+        it "returns error message" do
+          expect(error_msg).to eq "カードが入力されていないか、重複したカード組が入力されています。"
+        end
+      end
+
+      context "when nothing is entered in array" do
+        let(:cards_set){ [] }
+        it "returns error message" do
+          expect(error_msg).to eq "カードが入力されていないか、重複したカード組が入力されています。"
+        end
+      end
+    end
   end
 end
