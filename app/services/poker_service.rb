@@ -1,25 +1,25 @@
 module PokerService
   # webアプリケーションとAPIの処理を行うサービスです
-  include PokerValidation
+  include PokerTypo
   include PokerHand
   include PokerBest
 
   def judge_results(cards)
-    PokerValidation.validate_cards(cards) || PokerHand.judge_cards(cards)[:name]
+    PokerTypo.check_typo_cards(cards) || PokerHand.judge(cards)[:name]
   end
 
   def compare_results(cards_set)
-    invalid_cards_set = cards_set.select { |cards| PokerValidation.validate_cards(cards)&.any? }
+    invalid_cards_set = cards_set.select { |cards| PokerTypo.check_typo_cards(cards)&.any? }
     errors = invalid_cards_set.map do |cards|
       {
         cards: cards,
-        msg: PokerValidation.validate_cards(cards)
+        msg: PokerTypo.check_typo_cards(cards)
       }
     end
 
     valid_cards_set = cards_set - invalid_cards_set
     results = valid_cards_set.map do |cards|
-      judge_result = PokerHand.judge_cards(cards)
+      judge_result = PokerHand.judge(cards)
       {
         cards: cards,
         hand: judge_result[:name],
