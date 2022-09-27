@@ -16,7 +16,6 @@ module PokerHand
     result_array = HAND_SET.keys.map(&:to_s).map do |x|
       send(x, cards)
     end
-    # binding.pry
     result_array.compact![0]
   end
 
