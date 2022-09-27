@@ -77,9 +77,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
           }
         }
         it_behaves_like "returns Status: 400"
-        it "returns error message" do
-          expect(error_msg).to eq "入力内容が重複しています。"
-        end
       end
 
       context "when nothing is entered in array" do
@@ -89,9 +86,6 @@ RSpec.describe API::Ver1::Cards, type: :request do
           }
         }
         it_behaves_like "returns Status: 400"
-        it "returns error message" do
-          expect(error_msg).to eq "入力形式を確認してください。"
-        end
       end
     end
   end
