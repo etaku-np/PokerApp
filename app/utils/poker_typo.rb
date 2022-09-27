@@ -1,8 +1,8 @@
-module PokerValidation
-  # 入力されたカードの不正な入力を判定するモジュールです
+# 入力されたカードの不正な入力を判定
+module PokerTypo
   CORRECT =/^([SHDC])([1-9]|1[0-3])$/
 
-  def validate_cards(cards)
+  def check_typo_cards(cards)
     if cards.blank?
       ["カードを入力してください。"]
     elsif invalid_class?(cards)
@@ -14,7 +14,7 @@ module PokerValidation
   end
 
   def invalid_class?(cards)
-    true if cards.class != String
+    true unless cards.is_a?(String)
   end
 
   def invalid_total_cards?(card_array)
@@ -37,6 +37,6 @@ module PokerValidation
     true if card !~ CORRECT
   end
 
-  module_function :validate_cards, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit, :invalid_num_or_suit?
+  module_function :check_typo_cards, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit, :invalid_num_or_suit?
 end
 

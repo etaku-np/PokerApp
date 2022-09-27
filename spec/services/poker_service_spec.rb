@@ -4,8 +4,8 @@ RSpec.describe PokerService, type: :service do
   include PokerService
 
   describe "#judge_results" do
-    let(:error){ PokerValidation.validate_cards(cards) }
-    let(:result){ PokerHand.judge_cards(cards)[:name] }
+    let(:error){ PokerTypo.check_typo_cards(cards) }
+    let(:result){ PokerHand.judge(cards)[:name] }
 
     context "with hand, no error" do
       let(:cards){ "H6 C8 C1 D10 S1" }
@@ -67,19 +67,26 @@ RSpec.describe PokerService, type: :service do
       end
     end
 
-    context "when only invalid cards are entered" do
-      let(:cards_set){
-        [
-          " ",
-          "D2 C30 f4 D5 D10",
-          "D3 D3 H12 H3 C12"
-        ]
-      }
-      it "returns correct errors" do
-        expect(errors.map{|error| error[:msg]}).to eq [["カードを入力してください。"], %w[2番目のカード指定文字が不正です。(C30) 3番目のカード指定文字が不正です。(f4)], ["カードが重複しています。"]]
+    describe "the invalid input" do
+      let(:error_msg) { PokerService.cards_set_error_msg(cards_set)[:errors][0][:msg] }
+
+      context "when a duplicate pair of cards is entered" do
+        let(:cards_set){
+          [
+            "C2 C3 C4 C5 C6",
+            "C2 C3 C4 C5 C6"
+          ]
+        }
+        it "returns error message" do
+          expect(error_msg).to eq "カードが入力されていないか、重複したカード組が入力されています。"
+        end
       end
-      it "dose not display array of results" do
-        expect(results).to eq nil
+
+      context "when nothing is entered in array" do
+        let(:cards_set){ [] }
+        it "returns error message" do
+          expect(error_msg).to eq "カードが入力されていないか、重複したカード組が入力されています。"
+        end
       end
     end
   end
