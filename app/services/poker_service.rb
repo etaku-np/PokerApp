@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 # webアプリケーションとAPIの処理を行うサービスです
 module PokerService
-  include PokerTypo
+  include PokerSyntaxError
   include PokerHand
   include PokerBest
 
   def judge_results(cards)
-    PokerTypo.check_typo_cards(cards) || PokerHand.judge(cards)[:name]
+    PokerSyntaxError.check_syntax_errors(cards) || PokerHand.judge(cards)[:name]
   end
 
   def compare_results(cards_set)
-    invalid_cards_set = cards_set.select { |cards| PokerTypo.check_typo_cards(cards)&.any? }
+    invalid_cards_set = cards_set.select { |cards| PokerSyntaxError.check_syntax_errors(cards)&.any? }
     errors = invalid_cards_set.map do |cards|
       {
         cards: cards,
-        msg: PokerTypo.check_typo_cards(cards)
+        msg: PokerSyntaxError.check_syntax_errors(cards)
       }
     end
 

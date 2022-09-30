@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe PokerTypo, type: :module do
-  include PokerTypo
+RSpec.describe PokerSyntaxError, type: :module do
+  include PokerSyntaxError
 
   describe "#validate_cards" do
-    subject { PokerTypo.check_typo_cards(cards) }
+    subject { PokerSyntaxError.check_syntax_errors(cards) }
 
     context "when no card is entered" do
       let(:cards) { nil }
