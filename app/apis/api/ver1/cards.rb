@@ -10,10 +10,13 @@ module API
       resource :poker do
         post do
           cards_set = params[:cards]
-          error!({ errors: [{ msg: "入力内容を確認してください。" }] }, 400) if cards_set.empty?
-          error!({ errors: [{ msg: "入力内容が重複しています。" }] }, 400) if cards_set != cards_set.uniq
-          present PokerService.compare_results(cards_set)
-          status 200
+          if PokerService.invalid_cards_set?(cards_set)
+            present PokerService.cards_set_error_msg(cards_set)
+            status 400
+          else
+            present PokerService.compare_results(cards_set)
+            status 200
+          end
         end
       end
     end

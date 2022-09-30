@@ -32,5 +32,16 @@ module PokerService
     response.delete_if{ |_, v| v.empty? }
   end
 
-  module_function :judge_results, :compare_results
+  def invalid_cards_set?(cards_set)
+    cards_set.empty? || (cards_set != cards_set.uniq)
+  end
+
+  def cards_set_error_msg(cards_set)
+    {
+      errors: [{ msg: "カードが入力されていないか、重複したカード組が入力されています。" }],
+      duplicate: [{ cards: cards_set.select{ |card| cards_set.count(card) > 1 }.uniq }]
+    }
+  end
+
+  module_function :judge_results, :compare_results, :cards_set_error_msg, :invalid_cards_set?
 end
