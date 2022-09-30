@@ -13,10 +13,7 @@ module PokerHand
   }.freeze
 
   def judge(cards)
-    result_array = HAND_SET.keys.map(&:to_s).map do |x|
-      send(x, cards)
-    end
-    result_array.compact![0]
+    HAND_SET.values_at(HAND_SET.keys.find { |x| send(x, cards) })[0]
   end
 
   def suit_array(cards)
@@ -42,7 +39,8 @@ module PokerHand
 
   def straight(cards)
     num_array = num_array(cards)
-    HAND_SET[:straight] if ( (num_array.uniq.length == 5) && (num_array.max - num_array.min == 4) ) || num_array == [1, 10, 11, 12, 13]
+    HAND_SET[:straight] if ( (num_array.uniq.length == 5) && (num_array.max - num_array.min == 4) ) || num_array == [1,
+10, 11, 12, 13]
   end
 
   def four_card(cards)
@@ -69,6 +67,7 @@ module PokerHand
     HAND_SET[:high_card] unless ([straight(cards)] + [flush(cards)]).any? && num_count_array(cards) == [1, 1, 1, 1, 1]
   end
 
-  module_function :suit_array, :num_array, :num_count_array, :straight_flush, :flush, :straight, :full_house, :four_card, :three_card, :two_pair, :one_pair, :high_card, :judge
+  module_function :suit_array, :num_array, :num_count_array, :straight_flush, :flush, :straight, :full_house,
+                  :four_card, :three_card, :two_pair, :one_pair, :high_card, :judge
 
 end
