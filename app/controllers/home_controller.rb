@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   include PokerService
 
-  def top
-  end
+  def top; end
 
   def check
     cards = params[:cards]
@@ -11,6 +10,6 @@ class HomeController < ApplicationController
     message = PokerService.judge_results(cards)
     flash[:message] = message.is_a?(Array) ? message.join("\n") : message
 
-    redirect_to("/")
+    redirect_to('/')
   end
 end

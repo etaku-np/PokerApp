@@ -4,7 +4,7 @@ RSpec.describe PokerService, type: :service do
   include PokerService
 
   describe "#judge_results" do
-    let(:error){ PokerTypo.check_typo_cards(cards) }
+    let(:error){ PokerSyntaxError.check_syntax_errors(cards) }
     let(:result){ PokerHand.judge(cards)[:name] }
 
     context "with hand, no error" do
