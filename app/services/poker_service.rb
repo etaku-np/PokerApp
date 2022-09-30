@@ -30,7 +30,7 @@ module PokerService
     results = PokerBest.judge_best(results)
 
     response = { results: results, errors: errors }
-    response.delete_if{ |_, v| v.empty? }
+    response.delete_if { |_, v| v.empty? }
   end
 
   def invalid_cards_set?(cards_set)
@@ -40,7 +40,7 @@ module PokerService
   def cards_set_error_msg(cards_set)
     {
       errors: [{ msg: 'カードが入力されていないか、重複したカード組が入力されています。' }],
-      duplicate: [{ cards: cards_set.select{ |card| cards_set.count(card) > 1 }.uniq }]
+      duplicate: [{ cards: cards_set.select { |card| cards_set.count(card) > 1 }.uniq }]
     }
   end
 
