@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+# webアプリケーションとAPIの処理を行うサービスです
 module PokerService
-  # webアプリケーションとAPIの処理を行うサービスです
   include PokerTypo
   include PokerHand
   include PokerBest
@@ -38,7 +39,7 @@ module PokerService
 
   def cards_set_error_msg(cards_set)
     {
-      errors: [{ msg: "カードが入力されていないか、重複したカード組が入力されています。" }],
+      errors: [{ msg: 'カードが入力されていないか、重複したカード組が入力されています。' }],
       duplicate: [{ cards: cards_set.select{ |card| cards_set.count(card) > 1 }.uniq }]
     }
   end
