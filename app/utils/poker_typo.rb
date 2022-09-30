@@ -1,12 +1,12 @@
 # 入力されたカードの不正な入力を判定
 module PokerTypo
-  CORRECT =/^([SHDC])([1-9]|1[0-3])$/
+  CORRECT = /^([SHDC])([1-9]|1[0-3])$/.freeze
 
   def check_typo_cards(cards)
     if cards.blank?
-      ["カードを入力してください。"]
+      ['カードを入力してください。']
     elsif invalid_class?(cards)
-      ["文字列を入力してください。"]
+      ['文字列を入力してください。']
     else
       card_array = cards.split
       invalid_total_cards?(card_array) || invalid_num_or_suit(card_array) || duplicate(card_array)
@@ -18,11 +18,11 @@ module PokerTypo
   end
 
   def invalid_total_cards?(card_array)
-    ["5つのカード指定文字を半角スペース区切りで入力してください。"] if card_array.length != 5
+    ['5つのカード指定文字を半角スペース区切りで入力してください。'] if card_array.length != 5
   end
 
   def duplicate(card_array)
-    ["カードが重複しています。"] if card_array.uniq.length != 5
+    ['カードが重複しています。'] if card_array.uniq.length != 5
   end
 
   def invalid_num_or_suit(card_array)
@@ -37,6 +37,7 @@ module PokerTypo
     true if card !~ CORRECT
   end
 
-  module_function :check_typo_cards, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit, :invalid_num_or_suit?
+  module_function :check_typo_cards, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit,
+                  :invalid_num_or_suit?
 end
 
