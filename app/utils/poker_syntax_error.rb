@@ -1,8 +1,8 @@
 # 入力されたカードの不正な入力を判定
-module PokerTypo
+module PokerSyntaxError
   CORRECT = /^([SHDC])([1-9]|1[0-3])$/.freeze
 
-  def check_typo_cards(cards)
+  def check_syntax_errors(cards)
     if cards.blank?
       ['カードを入力してください。']
     elsif invalid_class?(cards)
@@ -37,7 +37,7 @@ module PokerTypo
     true if card !~ CORRECT
   end
 
-  module_function :check_typo_cards, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit,
+  module_function :check_syntax_errors, :invalid_total_cards?, :invalid_class?, :duplicate, :invalid_num_or_suit,
                   :invalid_num_or_suit?
 end
 
