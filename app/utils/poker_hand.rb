@@ -13,7 +13,7 @@ module PokerHand
   }.freeze
 
   def judge(cards)
-    HAND_SET.values_at(HAND_SET.keys.find { |x| send(x, cards) })[0]
+    HAND_SET[(HAND_SET.keys.find { |x| send(x, cards) })]
   end
 
   def suit_array(cards)
